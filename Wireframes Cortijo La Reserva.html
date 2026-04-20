@@ -1,0 +1,2262 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Wireframes — Cortijo La Reserva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=Architects+Daughter&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #3a3a3a;
+    --ink-3: #7a7a7a;
+    --paper: #f5f1e8;
+    --paper-2: #efe9dc;
+    --line: #2a2a2a;
+    --accent: #8B4513; /* terracota */
+    --accent-2: #B8860B; /* dorado */
+    --green: #2E7D32;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Kalam', cursive;
+    font-weight: 400;
+  }
+  body {
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(139,69,19,0.03), transparent 50%),
+      repeating-linear-gradient(0deg, transparent 0 31px, rgba(0,0,0,0.035) 31px 32px);
+    min-height: 100vh;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .topbar .title {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+  }
+  .topbar .sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .topbar .spacer { flex: 1; }
+  .tweaks {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .tweak-group {
+    display: flex; align-items: center; gap: 6px;
+    padding: 4px 10px;
+    border: 1.5px dashed var(--ink);
+    border-radius: 20px;
+    background: var(--paper-2);
+  }
+  .tweak-group label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .tweak-group button {
+    font-family: 'Kalam', cursive;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    padding: 2px 8px;
+    cursor: pointer;
+    border-radius: 12px;
+    color: var(--ink-2);
+  }
+  .tweak-group button.on {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  /* ---------- nav tabs ---------- */
+  nav.tabs {
+    padding: 12px 24px;
+    display: flex; gap: 4px; flex-wrap: wrap;
+    border-bottom: 1px dashed var(--ink-3);
+    background: var(--paper);
+    position: sticky; top: 63px; z-index: 40;
+  }
+  nav.tabs button {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    background: transparent;
+    border: 1.5px solid transparent;
+    padding: 4px 14px;
+    cursor: pointer;
+    border-radius: 18px;
+    color: var(--ink-2);
+    transition: all 0.15s;
+  }
+  nav.tabs button:hover { border-color: var(--ink-3); }
+  nav.tabs button.active {
+    background: var(--ink);
+    color: var(--paper);
+    transform: rotate(-0.5deg);
+  }
+  nav.tabs .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    vertical-align: super;
+    margin-right: 4px;
+    opacity: 0.6;
+  }
+
+  /* ---------- page container ---------- */
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 24px 80px;
+  }
+  .page-head {
+    margin-bottom: 24px;
+    display: flex; align-items: baseline; gap: 14px;
+    flex-wrap: wrap;
+  }
+  .page-head .idx {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-3);
+    border: 1.5px solid var(--ink);
+    padding: 2px 8px;
+    border-radius: 50%;
+  }
+  .page-head h1 {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 44px;
+    margin: 0;
+    line-height: 1;
+  }
+  .page-head .note {
+    font-family: 'Kalam', cursive;
+    font-size: 15px;
+    color: var(--ink-3);
+  }
+
+  /* ---------- wireframe blocks ---------- */
+  .wf {
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    padding: 0;
+    position: relative;
+    box-shadow: 4px 4px 0 var(--ink);
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .wf-label {
+    position: absolute;
+    top: -14px; left: 18px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  .wf-tag {
+    position: absolute;
+    top: -14px; right: 18px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 3px;
+  }
+
+  /* ---------- generic blocks ---------- */
+  .box {
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    padding: 12px;
+    position: relative;
+    background: var(--paper);
+  }
+  .box.dashed { border-style: dashed; }
+  .box.filled { background: var(--ink); color: var(--paper); }
+  .box.accent { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+
+  .img-ph {
+    border: 1.5px solid var(--ink);
+    background:
+      linear-gradient(135deg, transparent 48%, var(--ink-3) 48% 52%, transparent 52%),
+      linear-gradient(45deg, transparent 48%, var(--ink-3) 48% 52%, transparent 52%);
+    background-color: var(--paper-2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-2);
+    text-align: center;
+    padding: 8px;
+    position: relative;
+  }
+  .img-ph span {
+    background: var(--paper);
+    padding: 4px 8px;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+    line-height: 1.2;
+  }
+  .img-ph.rounded { border-radius: 50%; }
+
+  .line {
+    height: 8px;
+    background: var(--ink);
+    border-radius: 2px;
+    margin: 6px 0;
+  }
+  .line.short { width: 40%; }
+  .line.med { width: 70%; }
+  .line.thin { height: 4px; background: var(--ink-3); }
+  .line.pad { margin: 10px 0; }
+
+  .txt-lines {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .txt-lines .ln {
+    height: 6px;
+    background: var(--ink-3);
+    border-radius: 3px;
+  }
+  .txt-lines .ln.w100 { width: 100%; }
+  .txt-lines .ln.w90 { width: 90%; }
+  .txt-lines .ln.w80 { width: 80%; }
+  .txt-lines .ln.w70 { width: 70%; }
+  .txt-lines .ln.w60 { width: 60%; }
+  .txt-lines .ln.w50 { width: 50%; }
+  .txt-lines .ln.w40 { width: 40%; }
+
+  .btn-ph {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px;
+    border: 2px solid var(--ink);
+    border-radius: 3px;
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    font-weight: 600;
+    background: var(--paper);
+  }
+  .btn-ph.primary { background: var(--ink); color: var(--paper); }
+  .btn-ph.accent { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+  .btn-ph.sm { font-size: 14px; padding: 5px 12px; }
+
+  .label-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+  }
+  .handwritten {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .handwritten.sm { font-size: 18px; }
+  .handwritten.lg { font-size: 34px; }
+
+  .annotation {
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    color: var(--accent);
+    position: absolute;
+    pointer-events: none;
+  }
+  .annotation::before {
+    content: "↳ ";
+  }
+
+  .arrow {
+    font-family: 'Caveat', cursive;
+    color: var(--accent);
+    font-size: 24px;
+  }
+
+  /* ---------- mock browser chrome ---------- */
+  .browser {
+    background: var(--paper-2);
+    border-bottom: 1.5px solid var(--ink);
+    padding: 8px 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .browser .dots { display: flex; gap: 5px; }
+  .browser .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--ink); }
+  .browser .url {
+    flex: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-radius: 3px;
+    padding: 4px 10px;
+    color: var(--ink-2);
+  }
+  .browser .lang {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    border: 1.5px solid var(--ink);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  /* ---------- header nav mock ---------- */
+  .site-header {
+    border-bottom: 1.5px solid var(--ink);
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .site-header .logo-ph {
+    width: 120px; height: 36px;
+    border: 1.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    font-weight: 700;
+    background: var(--paper-2);
+  }
+  .site-header .navlinks { display: flex; gap: 18px; flex: 1; justify-content: center; }
+  .site-header .navlinks span {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  .site-header .hcta {
+    display: flex; gap: 8px; align-items: center;
+  }
+
+  /* ---------- Home hero ---------- */
+  .hero {
+    padding: 40px 28px;
+    min-height: 380px;
+    position: relative;
+    background-color: var(--paper-2);
+    background-image:
+      linear-gradient(135deg, transparent 48%, var(--ink-3) 48% 52%, transparent 52%),
+      linear-gradient(45deg, transparent 48%, var(--ink-3) 48% 52%, transparent 52%);
+    background-size: 40px 40px;
+    border-bottom: 1.5px solid var(--ink);
+    display: flex; flex-direction: column; justify-content: center; gap: 16px;
+  }
+  .hero-label {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--paper); border: 1.5px solid var(--ink);
+    padding: 4px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+  }
+  .hero h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 52px; line-height: 1;
+    margin: 0;
+    max-width: 700px;
+    background: var(--paper);
+    padding: 8px 14px;
+    border: 2px solid var(--ink);
+    display: inline-block;
+    align-self: flex-start;
+  }
+  .hero .sub {
+    background: var(--paper); border: 1.5px solid var(--ink);
+    padding: 8px 14px; max-width: 500px;
+    font-size: 16px;
+    align-self: flex-start;
+  }
+  .hero .ctas { display: flex; gap: 10px; margin-top: 8px; }
+
+  /* ---------- grid helpers ---------- */
+  .row { display: flex; gap: 14px; }
+  .col { flex: 1; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .stack { display: flex; flex-direction: column; gap: 10px; }
+  .p20 { padding: 20px; }
+  .p24 { padding: 24px; }
+  .mt8 { margin-top: 8px; } .mt12 { margin-top: 12px; } .mt16 { margin-top: 16px; } .mt24 { margin-top: 24px; }
+
+  .section-head {
+    display: flex; justify-content: space-between; align-items: end;
+    padding: 20px 24px 8px;
+    border-top: 2px dashed var(--ink-3);
+  }
+  .section-head h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 32px; margin: 0;
+  }
+  .section-head .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--ink-3);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  /* ---------- card: horse ---------- */
+  .horse-card {
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--paper);
+    display: flex; flex-direction: column;
+  }
+  .horse-card .ph {
+    aspect-ratio: 4/3;
+    background-color: var(--paper-2);
+    background-image:
+      linear-gradient(135deg, transparent 48%, var(--ink-3) 48% 52%, transparent 52%),
+      linear-gradient(45deg, transparent 48%, var(--ink-3) 48% 52%, transparent 52%);
+    border-bottom: 1.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-2);
+  }
+  .horse-card .info {
+    padding: 10px;
+  }
+  .horse-card .name {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .horse-card .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--ink-3);
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+  }
+  .horse-card .badge {
+    display: inline-block;
+    background: var(--green);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+  .horse-card .badge.sold { background: var(--ink-3); }
+  .horse-card .badge.repro { background: var(--accent); }
+
+  /* ---------- footer mock ---------- */
+  .site-footer {
+    border-top: 1.5px solid var(--ink);
+    padding: 24px;
+    background: var(--paper-2);
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 20px;
+  }
+  .site-footer h5 {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 14px; margin: 0 0 8px;
+  }
+
+  /* ---------- pages hidden/shown ---------- */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ---------- hide tweaks on off ---------- */
+  body.tweaks-off .tweaks { display: none; }
+
+  /* ---------- scribble underlines ---------- */
+  .scribble {
+    text-decoration: none;
+    background: linear-gradient(transparent 85%, var(--accent) 85% 95%, transparent 95%);
+    padding: 0 2px;
+  }
+
+  /* ---------- sitemap ---------- */
+  .sitemap {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    padding: 28px;
+  }
+  .sitemap .node {
+    border: 1.5px solid var(--ink);
+    border-radius: 6px;
+    padding: 12px;
+    text-align: center;
+    background: var(--paper);
+    position: relative;
+  }
+  .sitemap .node.root {
+    grid-column: 1 / -1;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    padding: 16px;
+  }
+  .sitemap .node .nm {
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .sitemap .node .nn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--ink-3);
+  }
+
+  /* ---------- mobile frame ---------- */
+  .mobile {
+    width: 280px;
+    border: 2px solid var(--ink);
+    border-radius: 28px;
+    padding: 28px 12px;
+    background: var(--paper);
+    box-shadow: 3px 3px 0 var(--ink);
+    position: relative;
+  }
+  .mobile::before {
+    content: ""; display: block;
+    width: 60px; height: 6px;
+    background: var(--ink);
+    border-radius: 3px;
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  }
+
+  /* ---------- color swatches ---------- */
+  .swatch {
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .swatch .chip { height: 80px; }
+  .swatch .meta {
+    padding: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    border-top: 1.5px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  /* ---------- small utilities ---------- */
+  .flex-between { display: flex; justify-content: space-between; align-items: center; }
+  .gap8 { gap: 8px; }
+  .gap12 { gap: 12px; }
+
+  .pill {
+    display: inline-block;
+    border: 1.5px solid var(--ink);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-family: 'Kalam', cursive;
+    font-size: 13px;
+    background: var(--paper);
+  }
+  .pill.accent { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+
+  /* variation toggle containers */
+  .variation { display: none; }
+  .variation.on { display: block; }
+
+  .v-label {
+    display: inline-block;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 700;
+    background: var(--accent);
+    color: var(--paper);
+    padding: 3px 12px;
+    border-radius: 20px;
+    transform: rotate(-1.5deg);
+    margin-bottom: 14px;
+  }
+
+  .callout {
+    border: 1.5px dashed var(--accent);
+    background: rgba(139, 69, 19, 0.05);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-family: 'Kalam', cursive;
+    font-size: 14px;
+    color: var(--accent);
+    margin: 14px 0;
+  }
+
+  .intro-card {
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    padding: 20px 24px;
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 var(--ink);
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+  .intro-card h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 36px;
+    margin: 0 0 10px;
+  }
+  .intro-card p {
+    font-family: 'Kalam', cursive;
+    font-size: 15px;
+    margin: 6px 0;
+    color: var(--ink-2);
+  }
+  .intro-card ul {
+    font-family: 'Kalam', cursive;
+    font-size: 14px;
+    color: var(--ink-2);
+    padding-left: 18px;
+    margin: 0;
+  }
+  .intro-card .legend {
+    border-left: 2px dashed var(--ink-3);
+    padding-left: 18px;
+  }
+  .intro-card .legend h4 {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 14px;
+    margin: 0 0 8px;
+    color: var(--ink-2);
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Kalam', cursive;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .legend-item .sq {
+    width: 16px; height: 12px;
+    border: 1.5px solid var(--ink);
+  }
+  .legend-item .sq.filled { background: var(--ink); }
+  .legend-item .sq.accent { background: var(--accent); border-color: var(--accent); }
+  .legend-item .sq.dashed { border-style: dashed; }
+
+  /* cruces diagonales para timeline */
+  .gantt-row { display: grid; grid-template-columns: 160px repeat(6, 1fr); gap: 4px; margin-bottom: 4px; font-size: 13px; }
+  .gantt-row .task { font-family: 'Kalam', cursive; }
+  .gantt-row .cell { height: 20px; border: 1px solid var(--ink-3); border-radius: 2px; }
+  .gantt-row .cell.on { background: var(--ink); }
+  .gantt-row .cell.accent { background: var(--accent); }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="title">Wireframes — Cortijo La Reserva</div>
+    <div class="sub">Low-fi · v1.0 · Propuesta Abril 2026</div>
+  </div>
+  <div class="spacer"></div>
+  <div class="tweaks">
+    <div class="tweak-group">
+      <label>Home</label>
+      <button class="hvar on" data-var="A">A · Vertical clásico</button>
+      <button class="hvar" data-var="B">B · Split hero</button>
+      <button class="hvar" data-var="C">C · Editorial</button>
+      <button class="hvar" data-var="D">D · Catálogo-first</button>
+    </div>
+    <div class="tweak-group">
+      <label>Densidad</label>
+      <button class="dens on" data-dens="roomy">Amplia</button>
+      <button class="dens" data-dens="compact">Compacta</button>
+    </div>
+    <div class="tweak-group">
+      <label>Anotaciones</label>
+      <button class="ann on" data-ann="on">On</button>
+      <button class="ann" data-ann="off">Off</button>
+    </div>
+  </div>
+</div>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="overview" class="active"><span class="num">00</span>Overview</button>
+  <button data-tab="sitemap"><span class="num">01</span>Mapa del sitio</button>
+  <button data-tab="home"><span class="num">02</span>Home</button>
+  <button data-tab="quienes"><span class="num">03</span>Quiénes Somos</button>
+  <button data-tab="genetica"><span class="num">04</span>Propuesta Genética</button>
+  <button data-tab="servicios"><span class="num">05</span>Servicios Reproductivos</button>
+  <button data-tab="catalogo"><span class="num">06</span>Catálogo</button>
+  <button data-tab="internacional"><span class="num">07</span>Presencia Intl.</button>
+  <button data-tab="eventos"><span class="num">08</span>Eventos</button>
+  <button data-tab="contenido"><span class="num">09</span>Contenido</button>
+  <button data-tab="contacto"><span class="num">10</span>Contacto</button>
+  <button data-tab="mobile"><span class="num">11</span>Móvil</button>
+</nav>
+
+<!-- ==================== OVERVIEW ==================== -->
+<div class="page active" data-page="overview">
+  <div class="page-head">
+    <span class="idx">00</span>
+    <h1>Overview del proyecto</h1>
+    <span class="note">— notas del diseñador antes de entrar a pantallas</span>
+  </div>
+
+  <div class="intro-card">
+    <div>
+      <h2>¿Qué estamos resolviendo?</h2>
+      <p>
+        Sitio institucional B2B para <strong>Cortijo La Reserva</strong> — genética equina y
+        reproducción asistida. El sitio debe comunicar <em>autoridad técnica</em> y
+        <em>posicionamiento premium</em>, generando leads en México, España y EE.UU.
+      </p>
+      <p>
+        Estos wireframes exploran <strong>4 rutas distintas para el Home</strong>
+        (usá el tweak arriba), más las 8 secciones restantes en una sola dirección
+        estructural para validar jerarquía y flujos antes de pasar a UI.
+      </p>
+      <ul>
+        <li>9 secciones institucionales según propuesta</li>
+        <li>Bilingüe ES/EN — estructura espejo</li>
+        <li>Conversión: contacto comercial segmentado + WhatsApp</li>
+        <li>Mobile-first explorado al final</li>
+      </ul>
+    </div>
+    <div class="legend">
+      <h4>Leyenda de símbolos</h4>
+      <div class="legend-item"><div class="sq"></div> Bloque / contenedor</div>
+      <div class="legend-item"><div class="sq dashed"></div> Área opcional o futura</div>
+      <div class="legend-item"><div class="sq filled"></div> Botón primario / CTA</div>
+      <div class="legend-item"><div class="sq accent"></div> Acento terracota (brand)</div>
+      <div class="legend-item"><span class="label-mono">XX</span> Placeholder fotográfico</div>
+      <div class="legend-item"><span class="arrow">↳</span> Anotación de diseño</div>
+    </div>
+  </div>
+
+  <!-- Paleta y tipografía de referencia -->
+  <div class="wf">
+    <span class="wf-label">paleta propuesta (ajustable al brandbook de LATERAL)</span>
+    <span class="wf-tag">§6.1</span>
+    <div class="grid-4 p24" style="grid-template-columns: repeat(8, 1fr); gap: 10px;">
+      <div class="swatch"><div class="chip" style="background:#8B4513"></div><div class="meta">TERRACOTA<br/>#8B4513</div></div>
+      <div class="swatch"><div class="chip" style="background:#1A1A2E"></div><div class="meta">OSCURO<br/>#1A1A2E</div></div>
+      <div class="swatch"><div class="chip" style="background:#FDF8F0"></div><div class="meta">CREMA<br/>#FDF8F0</div></div>
+      <div class="swatch"><div class="chip" style="background:#B8860B"></div><div class="meta">DORADO<br/>#B8860B</div></div>
+      <div class="swatch"><div class="chip" style="background:#D2B48C"></div><div class="meta">ARENA<br/>#D2B48C</div></div>
+      <div class="swatch"><div class="chip" style="background:#2E7D32"></div><div class="meta">VERDE<br/>#2E7D32</div></div>
+      <div class="swatch"><div class="chip" style="background:#CD7F32"></div><div class="meta">BRONCE<br/>#CD7F32</div></div>
+      <div class="swatch"><div class="chip" style="background:#4A4A5A"></div><div class="meta">TEXTO<br/>#4A4A5A</div></div>
+    </div>
+  </div>
+
+  <!-- Gantt -->
+  <div class="wf p24">
+    <span class="wf-label">plan de trabajo — 6 semanas</span>
+    <span class="wf-tag">§7.1</span>
+    <div style="margin-top: 8px;">
+      <div class="gantt-row">
+        <div class="task"></div>
+        <div class="label-mono">S1</div><div class="label-mono">S2</div><div class="label-mono">S3</div>
+        <div class="label-mono">S4</div><div class="label-mono">S5</div><div class="label-mono">S6</div>
+      </div>
+      <div class="gantt-row"><div class="task">Arquitectura UX</div><div class="cell on"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+      <div class="gantt-row"><div class="task">Wireframes ← acá</div><div class="cell"></div><div class="cell accent"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+      <div class="gantt-row"><div class="task">Diseño UI</div><div class="cell"></div><div class="cell"></div><div class="cell on"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+      <div class="gantt-row"><div class="task">Desarrollo Web</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on"></div><div class="cell on"></div><div class="cell"></div></div>
+      <div class="gantt-row"><div class="task">Carga contenidos</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on"></div><div class="cell"></div></div>
+      <div class="gantt-row"><div class="task">SEO + Configs</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on"></div><div class="cell"></div></div>
+      <div class="gantt-row"><div class="task">Testing + Launch</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SITEMAP ==================== -->
+<div class="page" data-page="sitemap">
+  <div class="page-head">
+    <span class="idx">01</span>
+    <h1>Mapa del sitio</h1>
+    <span class="note">— 9 secciones principales + flujos hacia contacto</span>
+  </div>
+
+  <div class="wf">
+    <span class="wf-label">estructura jerárquica</span>
+    <span class="wf-tag">§3.2</span>
+    <div class="sitemap">
+      <div class="node root">HOME · Cortijo La Reserva</div>
+      <div class="node"><div class="nn">02</div><div class="nm">Quiénes Somos</div><div class="label-mono">filosofía</div></div>
+      <div class="node"><div class="nn">03</div><div class="nm">Propuesta Genética</div><div class="label-mono">líneas · trazabilidad</div></div>
+      <div class="node"><div class="nn">04</div><div class="nm">Servicios Reprod.</div><div class="label-mono">TE · semen · asesoría</div></div>
+      <div class="node" style="background: var(--accent); color: var(--paper); border-color: var(--accent);"><div class="nn" style="color: rgba(255,255,255,0.7)">05</div><div class="nm">Catálogo ★</div><div class="label-mono" style="color: rgba(255,255,255,0.8)">caballos · yeguas · potros</div></div>
+      <div class="node"><div class="nn">06</div><div class="nm">Presencia Intl.</div><div class="label-mono">MX · ES · USA</div></div>
+      <div class="node"><div class="nn">07</div><div class="nm">Eventos</div><div class="label-mono">circuito deportivo</div></div>
+      <div class="node"><div class="nn">08</div><div class="nm">Contenido</div><div class="label-mono">editorial técnico</div></div>
+      <div class="node" style="background: var(--ink); color: var(--paper);"><div class="nn" style="color: rgba(255,255,255,0.6)">09</div><div class="nm">Contacto Comercial</div><div class="label-mono" style="color: rgba(255,255,255,0.8)">leads + WhatsApp</div></div>
+      <div class="node dashed" style="border-style: dashed;"><div class="nn">EXTRA</div><div class="nm">Ficha individual</div><div class="label-mono">/catalogo/[slug]</div></div>
+    </div>
+  </div>
+
+  <div class="wf p24">
+    <span class="wf-label">flujo principal de conversión</span>
+    <span class="wf-tag">B2B</span>
+    <div style="display:flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: 'Caveat', cursive; font-size: 20px; padding: 10px 0;">
+      <div class="box" style="flex: 0 0 auto;">Landing (Home)</div>
+      <span class="arrow">→</span>
+      <div class="box" style="flex: 0 0 auto;">Propuesta Genética <span class="label-mono">ó</span> Catálogo</div>
+      <span class="arrow">→</span>
+      <div class="box" style="flex: 0 0 auto;">Ficha individual</div>
+      <span class="arrow">→</span>
+      <div class="box accent">Contacto segmentado</div>
+      <span class="arrow">→</span>
+      <div class="box filled">WhatsApp / Email</div>
+    </div>
+    <div class="callout">
+      ↳ El <strong>Catálogo</strong> y las <strong>Fichas</strong> son el motor de leads. Todo otro camino debe poder saltar al contacto comercial en ≤ 2 clics.
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HOME ==================== -->
+<div class="page" data-page="home">
+  <div class="page-head">
+    <span class="idx">02</span>
+    <h1>Home — Página de Inicio</h1>
+    <span class="note">— 4 variaciones. Cambiá con el tweak arriba.</span>
+  </div>
+
+  <!-- VARIATION A: Vertical clásico -->
+  <div class="variation on" data-var="A">
+    <div class="v-label">Variación A · Vertical clásico (según propuesta)</div>
+    <div class="wf">
+      <span class="wf-label">home / desktop 1440</span>
+      <span class="wf-tag">A · vertical</span>
+      <div class="browser">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="url">cortijolareserva.com</div>
+        <div class="lang">ES</div><div class="lang">EN</div>
+      </div>
+      <div class="site-header">
+        <div class="logo-ph">LOGO</div>
+        <div class="navlinks">
+          <span>Inicio</span><span>Genética</span><span>Servicios</span><span>Catálogo</span>
+          <span>Eventos</span><span>Contenido</span><span>Contacto</span>
+        </div>
+        <div class="hcta">
+          <span class="label-mono">ES / EN</span>
+          <span class="btn-ph sm primary">Contactar</span>
+        </div>
+      </div>
+
+      <div class="hero">
+        <span class="hero-label">HERO · video loop cinematográfico 16:9</span>
+        <h2>Excelencia genética,<br/>respaldo técnico.</h2>
+        <div class="sub">Genética equina y reproducción asistida en México, España y EE.UU.</div>
+        <div class="ctas">
+          <span class="btn-ph primary">Conoce nuestra genética →</span>
+          <span class="btn-ph">Contáctanos</span>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h3>Pilares estratégicos</h3>
+        <span class="tag">SECTION · 4 columnas</span>
+      </div>
+      <div class="grid-4 p24" style="padding-top: 8px;">
+        <div class="box stack"><div class="handwritten">Genética</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+        <div class="box stack"><div class="handwritten">Reproducción</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w70"></div></div></div>
+        <div class="box stack"><div class="handwritten">Entrenamiento</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+        <div class="box stack"><div class="handwritten">Comercialización</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w70"></div></div></div>
+      </div>
+
+      <div class="section-head">
+        <h3>Ejemplares destacados</h3>
+        <span class="tag">CATALOG PREVIEW · 4 cards</span>
+      </div>
+      <div class="grid-4 p24" style="padding-top: 8px;">
+        <div class="horse-card"><div class="ph">[ caballo XX ]</div><div class="info"><div class="name">Marengo III</div><div class="meta">PSL · 5AÑ · SALTO</div><span class="badge">DISP.</span></div></div>
+        <div class="horse-card"><div class="ph">[ yegua XX ]</div><div class="info"><div class="name">Lucera</div><div class="meta">HANN · 8AÑ · REPRO</div><span class="badge repro">REPRO</span></div></div>
+        <div class="horse-card"><div class="ph">[ potro XX ]</div><div class="info"><div class="name">Zafiro</div><div class="meta">KWPN · 2AÑ · PROM.</div><span class="badge">DISP.</span></div></div>
+        <div class="horse-card"><div class="ph">[ caballo XX ]</div><div class="info"><div class="name">Trueno</div><div class="meta">PSL · 6AÑ · DOMA</div><span class="badge sold">VENDIDO</span></div></div>
+      </div>
+      <div style="text-align: center; padding: 4px 0 20px;"><span class="btn-ph">Ver catálogo completo →</span></div>
+
+      <div class="section-head">
+        <h3>Servicios reproductivos</h3>
+        <span class="tag">3 servicios + CTA</span>
+      </div>
+      <div class="grid-3 p24" style="padding-top: 8px;">
+        <div class="box">
+          <div class="label-mono">01</div>
+          <div class="handwritten">Transferencia embrionaria</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w70"></div></div>
+        </div>
+        <div class="box">
+          <div class="label-mono">02</div>
+          <div class="handwritten">Venta y compra de semen</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w60"></div></div>
+        </div>
+        <div class="box">
+          <div class="label-mono">03</div>
+          <div class="handwritten">Desarrollo genético</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div><div class="ln w70"></div></div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h3>Presencia internacional</h3>
+        <span class="tag">mapa + 3 markets</span>
+      </div>
+      <div class="row p24" style="padding-top: 8px; align-items: stretch;">
+        <div class="col img-ph" style="min-height: 200px;"><span>[ mapa mundi · MX · ES · USA ]</span></div>
+        <div class="col stack" style="flex: 0 0 280px;">
+          <div class="box"><div class="handwritten sm">México</div><div class="label-mono">operación principal</div></div>
+          <div class="box"><div class="handwritten sm">España</div><div class="label-mono">mercado estratégico</div></div>
+          <div class="box"><div class="handwritten sm">Estados Unidos</div><div class="label-mono">expansión comercial</div></div>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <h3>Eventos y circuito</h3>
+        <span class="tag">próximas participaciones</span>
+      </div>
+      <div class="grid-3 p24" style="padding-top: 8px;">
+        <div class="box"><div class="label-mono">MAY 2026</div><div class="handwritten sm">CSI·3★ Guadalajara</div><div class="txt-lines mt8"><div class="ln w80"></div></div></div>
+        <div class="box"><div class="label-mono">JUN 2026</div><div class="handwritten sm">Feria Sevilla</div><div class="txt-lines mt8"><div class="ln w80"></div></div></div>
+        <div class="box"><div class="label-mono">JUL 2026</div><div class="handwritten sm">Wellington FL</div><div class="txt-lines mt8"><div class="ln w80"></div></div></div>
+      </div>
+
+      <div class="site-footer">
+        <div>
+          <div class="logo-ph" style="margin-bottom: 10px;">LOGO</div>
+          <div class="txt-lines"><div class="ln w80"></div><div class="ln w60"></div></div>
+        </div>
+        <div><h5>Navegación</h5><div class="txt-lines"><div class="ln w70"></div><div class="ln w80"></div><div class="ln w60"></div><div class="ln w70"></div></div></div>
+        <div><h5>Contacto</h5><div class="txt-lines"><div class="ln w80"></div><div class="ln w70"></div></div><span class="pill accent mt8" style="display:inline-block; margin-top:8px;">WhatsApp</span></div>
+        <div><h5>Regiones</h5><div class="txt-lines"><div class="ln w50"></div><div class="ln w50"></div><div class="ln w60"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIATION B: Split hero -->
+  <div class="variation" data-var="B">
+    <div class="v-label">Variación B · Split hero (ejemplar protagonista)</div>
+    <div class="wf">
+      <span class="wf-label">home / desktop 1440</span>
+      <span class="wf-tag">B · split</span>
+      <div class="browser">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="url">cortijolareserva.com</div>
+        <div class="lang">ES</div>
+      </div>
+      <div class="site-header">
+        <div class="logo-ph">LOGO</div>
+        <div class="navlinks">
+          <span>Genética</span><span>Servicios</span><span>Catálogo</span>
+          <span>Presencia</span><span>Eventos</span><span>Contacto</span>
+        </div>
+        <div class="hcta"><span class="label-mono">ES · EN</span><span class="btn-ph sm accent">WhatsApp</span></div>
+      </div>
+
+      <div class="grid-2" style="gap: 0; border-bottom: 1.5px solid var(--ink);">
+        <div class="p24" style="padding: 40px; background: var(--paper-2); border-right: 1.5px solid var(--ink); display: flex; flex-direction: column; justify-content: center;">
+          <div class="label-mono">CORTIJO LA RESERVA · 2026</div>
+          <h2 style="font-family: 'Caveat'; font-size: 56px; line-height: 1; margin: 14px 0;">Líneas<br/>genéticas<br/>de élite.</h2>
+          <div class="txt-lines"><div class="ln w90"></div><div class="ln w100"></div><div class="ln w70"></div></div>
+          <div style="display: flex; gap: 10px; margin-top: 18px;">
+            <span class="btn-ph primary">Ver catálogo</span>
+            <span class="btn-ph">Contacto B2B</span>
+          </div>
+        </div>
+        <div class="img-ph" style="min-height: 480px;"><span>[ ejemplar destacado · foto vertical cinematográfica ]</span></div>
+      </div>
+
+      <!-- ticker de logros / stats -->
+      <div style="border-bottom: 1.5px solid var(--ink); padding: 16px 24px; background: var(--ink); color: var(--paper); display: flex; gap: 40px; justify-content: space-around;">
+        <div><div class="handwritten lg" style="color: var(--paper);">+120</div><div class="label-mono" style="color: rgba(255,255,255,0.6);">EJEMPLARES</div></div>
+        <div><div class="handwritten lg" style="color: var(--paper);">3</div><div class="label-mono" style="color: rgba(255,255,255,0.6);">MERCADOS</div></div>
+        <div><div class="handwritten lg" style="color: var(--paper);">15AÑ</div><div class="label-mono" style="color: rgba(255,255,255,0.6);">TRAYECTORIA</div></div>
+        <div><div class="handwritten lg" style="color: var(--paper);">+40</div><div class="label-mono" style="color: rgba(255,255,255,0.6);">EVENTOS/AÑ</div></div>
+      </div>
+
+      <div class="section-head">
+        <h3>Nuestra metodología</h3>
+        <span class="tag">3 pilares · narrativa</span>
+      </div>
+      <div class="grid-3 p24" style="padding-top: 8px;">
+        <div class="box stack"><div class="img-ph" style="height: 120px;"><span>[ genética ]</span></div><div class="handwritten sm">Selección genética</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+        <div class="box stack"><div class="img-ph" style="height: 120px;"><span>[ laboratorio ]</span></div><div class="handwritten sm">Reproducción asistida</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+        <div class="box stack"><div class="img-ph" style="height: 120px;"><span>[ entrenamiento ]</span></div><div class="handwritten sm">Desarrollo deportivo</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+      </div>
+
+      <div class="section-head">
+        <h3>Catálogo</h3>
+        <span class="tag">carrusel · 6 cards</span>
+      </div>
+      <div class="grid-6 p24" style="padding-top: 8px;">
+        <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name" style="font-size: 16px;">Marengo</div><div class="meta">PSL</div></div></div>
+        <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name" style="font-size: 16px;">Lucera</div><div class="meta">HANN</div></div></div>
+        <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name" style="font-size: 16px;">Zafiro</div><div class="meta">KWPN</div></div></div>
+        <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name" style="font-size: 16px;">Trueno</div><div class="meta">PSL</div></div></div>
+        <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name" style="font-size: 16px;">Estrella</div><div class="meta">WB</div></div></div>
+        <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name" style="font-size: 16px;">Rayo</div><div class="meta">SF</div></div></div>
+      </div>
+
+      <div class="site-footer">
+        <div><div class="logo-ph">LOGO</div></div>
+        <div><h5>Sitio</h5><div class="txt-lines"><div class="ln w70"></div><div class="ln w80"></div></div></div>
+        <div><h5>Contacto</h5><div class="txt-lines"><div class="ln w80"></div></div></div>
+        <div><h5>Social</h5><div class="txt-lines"><div class="ln w50"></div><div class="ln w60"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIATION C: Editorial -->
+  <div class="variation" data-var="C">
+    <div class="v-label">Variación C · Editorial / revista (autoridad técnica)</div>
+    <div class="wf">
+      <span class="wf-label">home / editorial layout</span>
+      <span class="wf-tag">C · editorial</span>
+      <div class="browser">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="url">cortijolareserva.com</div>
+        <div class="lang">ES</div>
+      </div>
+      <div class="site-header">
+        <div class="logo-ph">CORTIJO LR</div>
+        <div class="navlinks">
+          <span>Filosofía</span><span>Genética</span><span>Catálogo</span><span>Eventos</span><span>Editorial</span><span>Contacto</span>
+        </div>
+        <div class="hcta"><span class="btn-ph sm">ES / EN</span></div>
+      </div>
+
+      <!-- masthead style -->
+      <div style="padding: 40px 28px 20px; border-bottom: 2px solid var(--ink); text-align: center; background: var(--paper-2);">
+        <div class="label-mono">VOLUMEN 01 · ABRIL 2026 · MÉXICO · ESPAÑA · USA</div>
+        <h2 style="font-family: 'Caveat'; font-size: 72px; line-height: 1; margin: 10px 0 6px;">Cortijo La Reserva</h2>
+        <div class="handwritten" style="color: var(--ink-3); font-style: italic;">Genética equina · Reproducción asistida</div>
+      </div>
+
+      <!-- feature article layout -->
+      <div class="grid-2 p24" style="padding-top: 24px; gap: 24px;">
+        <div>
+          <div class="img-ph" style="height: 360px;"><span>[ ejemplar destacado · foto editorial B/W ]</span></div>
+          <div class="label-mono mt8">REPORTAJE · EDICIÓN</div>
+          <div class="handwritten lg mt8">La metodología detrás de una línea genética.</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w80"></div><div class="ln w70"></div></div>
+          <span class="btn-ph mt12" style="margin-top: 12px;">Leer el reportaje →</span>
+        </div>
+        <div class="stack">
+          <div class="box">
+            <div class="label-mono">DESTACADO · CATÁLOGO</div>
+            <div class="handwritten mt8">Marengo III</div>
+            <div class="img-ph" style="height: 160px; margin: 8px 0;"><span>[ XX ]</span></div>
+            <div class="txt-lines"><div class="ln w90"></div><div class="ln w70"></div></div>
+          </div>
+          <div class="box">
+            <div class="label-mono">PRÓXIMO EVENTO</div>
+            <div class="handwritten mt8">CSI·3★ Guadalajara — 15 May</div>
+            <div class="txt-lines mt8"><div class="ln w80"></div></div>
+          </div>
+          <div class="box accent">
+            <div class="label-mono" style="color: rgba(255,255,255,0.8);">AGENDA COMERCIAL</div>
+            <div class="handwritten mt8" style="color: var(--paper);">Visitas con cita previa</div>
+            <div class="btn-ph mt8" style="background: var(--paper); color: var(--accent); border-color: var(--paper);">Agendar</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- columns: services + genetics + events -->
+      <div class="grid-3 p24" style="border-top: 2px dashed var(--ink-3); padding-top: 24px;">
+        <div>
+          <div class="label-mono">SECCIÓN · 01</div>
+          <div class="handwritten mt8">Propuesta genética</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w70"></div></div>
+          <a class="pill mt8" style="margin-top: 10px; display: inline-block;">Explorar →</a>
+        </div>
+        <div>
+          <div class="label-mono">SECCIÓN · 02</div>
+          <div class="handwritten mt8">Servicios reproductivos</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w70"></div></div>
+          <a class="pill mt8" style="margin-top: 10px; display: inline-block;">Explorar →</a>
+        </div>
+        <div>
+          <div class="label-mono">SECCIÓN · 03</div>
+          <div class="handwritten mt8">Presencia internacional</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w70"></div></div>
+          <a class="pill mt8" style="margin-top: 10px; display: inline-block;">Explorar →</a>
+        </div>
+      </div>
+
+      <div class="site-footer">
+        <div><div class="logo-ph">LOGO</div></div>
+        <div><h5>Ediciones</h5><div class="txt-lines"><div class="ln w70"></div></div></div>
+        <div><h5>Contacto</h5><div class="txt-lines"><div class="ln w80"></div></div></div>
+        <div><h5>Newsletter</h5><div class="box dashed" style="padding: 4px 8px;">[ tu email ]</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIATION D: Catálogo-first -->
+  <div class="variation" data-var="D">
+    <div class="v-label">Variación D · Catálogo-first (conversión directa)</div>
+    <div class="wf">
+      <span class="wf-label">home / catálogo en hero</span>
+      <span class="wf-tag">D · commerce-driven</span>
+      <div class="browser">
+        <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+        <div class="url">cortijolareserva.com</div>
+        <div class="lang">ES</div>
+      </div>
+      <div class="site-header">
+        <div class="logo-ph">LOGO</div>
+        <div class="navlinks">
+          <span>Catálogo</span><span>Genética</span><span>Servicios</span><span>Eventos</span><span>Contacto</span>
+        </div>
+        <div class="hcta">
+          <span class="btn-ph sm">ES</span>
+          <span class="btn-ph sm accent">WhatsApp</span>
+        </div>
+      </div>
+
+      <!-- compact hero -->
+      <div style="padding: 24px; border-bottom: 1.5px solid var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+        <div>
+          <div class="label-mono">CORTIJO LA RESERVA</div>
+          <div class="handwritten lg" style="margin-top: 4px;">Excelencia genética para criadores exigentes.</div>
+        </div>
+        <div style="display: flex; gap: 20px;">
+          <div><div class="label-mono">EN CATÁLOGO</div><div class="handwritten lg">42</div></div>
+          <div><div class="label-mono">DISPONIBLES</div><div class="handwritten lg">18</div></div>
+          <div><div class="label-mono">REPRODUCCIÓN</div><div class="handwritten lg">9</div></div>
+        </div>
+      </div>
+
+      <!-- filter bar -->
+      <div style="padding: 14px 24px; border-bottom: 1.5px dashed var(--ink-3); display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <span class="label-mono">FILTROS</span>
+        <span class="pill">Todos</span>
+        <span class="pill accent">Caballos</span>
+        <span class="pill">Yeguas</span>
+        <span class="pill">Potros</span>
+        <span style="width: 1px; height: 20px; background: var(--ink-3); margin: 0 6px;"></span>
+        <span class="pill">Raza ▾</span>
+        <span class="pill">Disciplina ▾</span>
+        <span class="pill">Edad ▾</span>
+        <span class="pill">Estado ▾</span>
+        <div style="flex: 1;"></div>
+        <span class="label-mono">ORDEN: NOMBRE ▾</span>
+      </div>
+
+      <!-- grid catálogo prominent -->
+      <div class="grid-4 p24">
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>[ XX ]</span></div><div class="info"><div class="name">Marengo III</div><div class="meta">PSL · 5AÑ</div><span class="badge">DISP.</span></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>[ XX ]</span></div><div class="info"><div class="name">Lucera</div><div class="meta">HANN · 8AÑ</div><span class="badge repro">REPRO</span></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>[ XX ]</span></div><div class="info"><div class="name">Zafiro</div><div class="meta">KWPN · 2AÑ</div><span class="badge">DISP.</span></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>[ XX ]</span></div><div class="info"><div class="name">Trueno</div><div class="meta">PSL · 6AÑ</div><span class="badge">DISP.</span></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>[ XX ]</span></div><div class="info"><div class="name">Estrella</div><div class="meta">WB · 4AÑ</div><span class="badge repro">REPRO</span></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>[ XX ]</span></div><div class="info"><div class="name">Rayo</div><div class="meta">SF · 3AÑ</div><span class="badge">DISP.</span></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>[ XX ]</span></div><div class="info"><div class="name">Duende</div><div class="meta">PSL · 7AÑ</div><span class="badge sold">VEND.</span></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>[ XX ]</span></div><div class="info"><div class="name">Aurora</div><div class="meta">HANN · 5AÑ</div><span class="badge">DISP.</span></div></div>
+      </div>
+
+      <div style="text-align: center; padding: 10px 0 24px;">
+        <span class="btn-ph">Ver los 42 ejemplares →</span>
+      </div>
+
+      <!-- footer strip with services below -->
+      <div class="grid-3" style="border-top: 1.5px solid var(--ink); padding: 24px; gap: 14px;">
+        <div class="box"><div class="handwritten">¿Buscás criar?</div><div class="txt-lines mt8"><div class="ln w80"></div><div class="ln w60"></div></div><span class="btn-ph sm mt8" style="margin-top: 10px;">Servicios reproductivos →</span></div>
+        <div class="box"><div class="handwritten">¿Quiénes somos?</div><div class="txt-lines mt8"><div class="ln w80"></div><div class="ln w60"></div></div><span class="btn-ph sm mt8" style="margin-top: 10px;">Nuestra filosofía →</span></div>
+        <div class="box accent"><div class="handwritten" style="color: var(--paper);">Contactanos</div><div class="txt-lines mt8"><div class="ln w80" style="background: rgba(255,255,255,0.6);"></div></div><span class="btn-ph sm mt8" style="margin-top: 10px; background: var(--paper); color: var(--accent); border-color: var(--paper);">Agendar reunión →</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== QUIÉNES SOMOS ==================== -->
+<div class="page" data-page="quienes">
+  <div class="page-head">
+    <span class="idx">03</span>
+    <h1>Quiénes Somos / Filosofía</h1>
+    <span class="note">— autoridad + confianza. Foto protagonista.</span>
+  </div>
+
+  <div class="wf">
+    <span class="wf-label">sección interna</span>
+    <span class="wf-tag">§4.2</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks">
+        <span>Inicio</span><span style="font-weight: 700; text-decoration: underline;">Quiénes Somos</span><span>Genética</span><span>Servicios</span><span>Catálogo</span><span>Eventos</span><span>Contacto</span>
+      </div>
+      <div class="hcta"><span class="label-mono">ES / EN</span></div>
+    </div>
+
+    <!-- intro full-bleed -->
+    <div style="padding: 60px 28px; border-bottom: 1.5px solid var(--ink); background: var(--paper-2); text-align: center;">
+      <div class="label-mono">NUESTRA FILOSOFÍA</div>
+      <div class="handwritten" style="font-size: 48px; max-width: 700px; margin: 14px auto 0; line-height: 1.1;">Una visión de largo plazo sobre la genética equina.</div>
+    </div>
+
+    <!-- 2-col story -->
+    <div class="grid-2 p24" style="padding: 40px 28px; gap: 40px;">
+      <div class="img-ph" style="min-height: 380px;"><span>[ foto instalaciones<br/>o equipo · 4:5 ]</span></div>
+      <div>
+        <div class="label-mono">VISIÓN</div>
+        <div class="handwritten lg mt8">Compromiso con la excelencia genética.</div>
+        <div class="txt-lines mt12"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w100"></div><div class="ln w70"></div></div>
+        <div class="label-mono" style="margin-top: 20px;">TRAYECTORIA</div>
+        <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div></div>
+      </div>
+    </div>
+
+    <!-- pilares 4col -->
+    <div class="section-head">
+      <h3>Pilares metodológicos</h3>
+      <span class="tag">4 bloques con ícono placeholder</span>
+    </div>
+    <div class="grid-4 p24" style="padding-top: 8px;">
+      <div class="box stack"><div class="img-ph rounded" style="width: 48px; height: 48px;"><span>ic</span></div><div class="handwritten sm">Selección</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+      <div class="box stack"><div class="img-ph rounded" style="width: 48px; height: 48px;"><span>ic</span></div><div class="handwritten sm">Desarrollo embrionario</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+      <div class="box stack"><div class="img-ph rounded" style="width: 48px; height: 48px;"><span>ic</span></div><div class="handwritten sm">Entrenamiento</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+      <div class="box stack"><div class="img-ph rounded" style="width: 48px; height: 48px;"><span>ic</span></div><div class="handwritten sm">Comercialización</div><div class="txt-lines"><div class="ln w100"></div><div class="ln w80"></div></div></div>
+    </div>
+
+    <!-- equipo -->
+    <div class="section-head">
+      <h3>Equipo</h3>
+      <span class="tag">4-6 miembros</span>
+    </div>
+    <div class="grid-4 p24" style="padding-top: 8px;">
+      <div class="stack"><div class="img-ph" style="aspect-ratio: 3/4;"><span>[ retrato ]</span></div><div class="handwritten sm">Nombre Apellido</div><div class="label-mono">DIRECTOR GENERAL</div></div>
+      <div class="stack"><div class="img-ph" style="aspect-ratio: 3/4;"><span>[ retrato ]</span></div><div class="handwritten sm">Nombre Apellido</div><div class="label-mono">DIR. GENÉTICA</div></div>
+      <div class="stack"><div class="img-ph" style="aspect-ratio: 3/4;"><span>[ retrato ]</span></div><div class="handwritten sm">Nombre Apellido</div><div class="label-mono">VETERINARIO</div></div>
+      <div class="stack"><div class="img-ph" style="aspect-ratio: 3/4;"><span>[ retrato ]</span></div><div class="handwritten sm">Nombre Apellido</div><div class="label-mono">ENTRENADOR</div></div>
+    </div>
+
+    <!-- instalaciones -->
+    <div class="section-head">
+      <h3>Instalaciones</h3>
+      <span class="tag">galería masonry</span>
+    </div>
+    <div class="p24" style="padding-top: 8px; display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 160px 160px; gap: 10px;">
+      <div class="img-ph" style="grid-row: span 2;"><span>[ panorámica ]</span></div>
+      <div class="img-ph"><span>[ caballeriza ]</span></div>
+      <div class="img-ph"><span>[ pista ]</span></div>
+      <div class="img-ph"><span>[ lab ]</span></div>
+      <div class="img-ph"><span>[ pastos ]</span></div>
+    </div>
+
+    <!-- CTA banda -->
+    <div style="background: var(--ink); color: var(--paper); padding: 30px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+      <div class="handwritten" style="font-size: 28px; color: var(--paper);">¿Querés conocer el Cortijo en persona?</div>
+      <span class="btn-ph accent">Agendar visita</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PROPUESTA GENÉTICA ==================== -->
+<div class="page" data-page="genetica">
+  <div class="page-head">
+    <span class="idx">04</span>
+    <h1>Propuesta Genética</h1>
+    <span class="note">— contenido técnico, trazabilidad, árboles genealógicos</span>
+  </div>
+
+  <div class="wf">
+    <span class="wf-label">sección técnica</span>
+    <span class="wf-tag">§4.3</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks"><span>Inicio</span><span>Quiénes Somos</span><span style="font-weight: 700; text-decoration: underline;">Genética</span><span>Servicios</span><span>Catálogo</span><span>Eventos</span><span>Contacto</span></div>
+    </div>
+
+    <div style="padding: 40px 28px; border-bottom: 1.5px solid var(--ink);">
+      <div class="label-mono">PROPUESTA GENÉTICA · TRAZABILIDAD</div>
+      <div class="handwritten lg mt8" style="font-size: 44px;">Líneas de sangre documentadas. Resultados demostrables.</div>
+      <div class="txt-lines mt12" style="max-width: 640px;"><div class="ln w100"></div><div class="ln w90"></div></div>
+    </div>
+
+    <!-- navegación por líneas -->
+    <div style="padding: 16px 28px; background: var(--paper-2); border-bottom: 1.5px dashed var(--ink-3); display: flex; gap: 8px; flex-wrap: wrap;">
+      <span class="label-mono">LÍNEAS:</span>
+      <span class="pill accent">Línea Andaluza</span>
+      <span class="pill">Línea Hannoveriana</span>
+      <span class="pill">Línea KWPN</span>
+      <span class="pill">Línea Selle Français</span>
+    </div>
+
+    <!-- main 2col -->
+    <div class="grid-2 p24" style="padding: 28px; gap: 24px;">
+      <div>
+        <div class="label-mono">CRITERIOS DE SELECCIÓN</div>
+        <div class="handwritten mt8">¿Cómo elegimos?</div>
+        <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w80"></div><div class="ln w70"></div></div>
+
+        <div class="grid-2 mt16" style="margin-top: 20px; gap: 10px;">
+          <div class="box"><div class="handwritten lg" style="color: var(--accent);">01</div><div class="handwritten sm">Rendimiento deportivo</div></div>
+          <div class="box"><div class="handwritten lg" style="color: var(--accent);">02</div><div class="handwritten sm">Conformación</div></div>
+          <div class="box"><div class="handwritten lg" style="color: var(--accent);">03</div><div class="handwritten sm">Temperamento</div></div>
+          <div class="box"><div class="handwritten lg" style="color: var(--accent);">04</div><div class="handwritten sm">Salud y longevidad</div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label-mono">ÁRBOL GENEALÓGICO INTERACTIVO</div>
+        <div class="handwritten mt8">Ejemplo · Marengo III</div>
+        <!-- pedigree tree placeholder -->
+        <div class="box mt8" style="padding: 20px; background: var(--paper-2);">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-size: 11px; font-family: 'JetBrains Mono', monospace;">
+            <div class="box" style="padding: 6px; font-size: 10px; grid-column: span 4; text-align:center; background: var(--ink); color: var(--paper);">MARENGO III</div>
+            <div class="box" style="padding: 4px; font-size: 9px; grid-column: span 2; text-align:center;">PADRE · SEMENTAL</div>
+            <div class="box" style="padding: 4px; font-size: 9px; grid-column: span 2; text-align:center;">MADRE · YEGUA</div>
+            <div class="box dashed" style="padding: 4px; font-size: 9px; text-align:center;">ABUELO P.</div>
+            <div class="box dashed" style="padding: 4px; font-size: 9px; text-align:center;">ABUELA P.</div>
+            <div class="box dashed" style="padding: 4px; font-size: 9px; text-align:center;">ABUELO M.</div>
+            <div class="box dashed" style="padding: 4px; font-size: 9px; text-align:center;">ABUELA M.</div>
+          </div>
+          <div class="callout" style="margin-top: 14px;">↳ Expandible hasta 4 generaciones · Click en cada nodo muestra ficha completa</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- resultados genéticos -->
+    <div class="section-head">
+      <h3>Resultados documentados</h3>
+      <span class="tag">tabla + gráfico placeholder</span>
+    </div>
+    <div class="grid-2 p24" style="padding-top: 8px; gap: 14px;">
+      <div class="box">
+        <div class="label-mono">ÍNDICE GENÉTICO · ÚLTIMOS 5 AÑOS</div>
+        <div class="img-ph mt8" style="height: 220px;"><span>[ gráfico de barras<br/>evolución por línea ]</span></div>
+      </div>
+      <div class="box">
+        <div class="label-mono">PRINCIPALES LOGROS DEPORTIVOS</div>
+        <div class="stack mt8">
+          <div class="flex-between" style="border-bottom: 1px dashed var(--ink-3); padding: 6px 0;"><span class="handwritten sm">2025 · CSI·3★ GDL</span><span class="label-mono">1° LUGAR</span></div>
+          <div class="flex-between" style="border-bottom: 1px dashed var(--ink-3); padding: 6px 0;"><span class="handwritten sm">2025 · Sevilla Open</span><span class="label-mono">TOP 5</span></div>
+          <div class="flex-between" style="border-bottom: 1px dashed var(--ink-3); padding: 6px 0;"><span class="handwritten sm">2024 · Wellington</span><span class="label-mono">2° LUGAR</span></div>
+          <div class="flex-between" style="padding: 6px 0;"><span class="handwritten sm">2024 · CSI·4★ MX</span><span class="label-mono">PODIUM</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: var(--accent); color: var(--paper); padding: 30px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+      <div>
+        <div class="label-mono" style="color: rgba(255,255,255,0.7);">¿INTERESADO EN NUESTRA GENÉTICA?</div>
+        <div class="handwritten" style="font-size: 28px; color: var(--paper);">Solicitá el dossier técnico completo.</div>
+      </div>
+      <span class="btn-ph" style="background: var(--paper); color: var(--accent); border-color: var(--paper);">Pedir dossier →</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SERVICIOS ==================== -->
+<div class="page" data-page="servicios">
+  <div class="page-head">
+    <span class="idx">05</span>
+    <h1>Servicios Reproductivos</h1>
+    <span class="note">— 4 servicios con lead form específico</span>
+  </div>
+
+  <div class="wf">
+    <span class="wf-label">sección de servicios</span>
+    <span class="wf-tag">§4.4</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks"><span>Inicio</span><span>Quiénes Somos</span><span>Genética</span><span style="font-weight: 700; text-decoration: underline;">Servicios</span><span>Catálogo</span><span>Eventos</span><span>Contacto</span></div>
+    </div>
+
+    <div style="padding: 40px 28px; border-bottom: 1.5px solid var(--ink);">
+      <div class="label-mono">SERVICIOS REPRODUCTIVOS</div>
+      <div class="handwritten lg mt8" style="font-size: 44px;">Reproducción asistida de alto nivel.</div>
+      <div class="txt-lines mt12" style="max-width: 640px;"><div class="ln w100"></div><div class="ln w90"></div></div>
+    </div>
+
+    <!-- servicios 4 -->
+    <div class="stack p24" style="gap: 16px;">
+      <!-- service 1: TE -->
+      <div class="box" style="display: grid; grid-template-columns: 1fr 2fr auto; gap: 20px; align-items: center; padding: 20px;">
+        <div class="img-ph" style="height: 140px;"><span>[ TE · foto lab ]</span></div>
+        <div>
+          <div class="label-mono">SERVICIO 01</div>
+          <div class="handwritten lg">Transferencia embrionaria</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div><div class="ln w70"></div></div>
+          <div style="display: flex; gap: 6px; margin-top: 10px;">
+            <span class="pill">Protocolo</span><span class="pill">Receptoras</span><span class="pill">Resultados</span>
+          </div>
+        </div>
+        <div class="stack" style="gap: 6px;">
+          <span class="btn-ph sm primary">Solicitar →</span>
+          <span class="btn-ph sm">PDF técnico</span>
+        </div>
+      </div>
+
+      <!-- service 2: semen -->
+      <div class="box" style="display: grid; grid-template-columns: 1fr 2fr auto; gap: 20px; align-items: center; padding: 20px;">
+        <div class="img-ph" style="height: 140px;"><span>[ semen · catálogo ]</span></div>
+        <div>
+          <div class="label-mono">SERVICIO 02</div>
+          <div class="handwritten lg">Venta y compra de semen</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div></div>
+          <div style="display: flex; gap: 6px; margin-top: 10px;">
+            <span class="pill">Catálogo sementales</span><span class="pill accent">12 disponibles</span>
+          </div>
+        </div>
+        <div class="stack" style="gap: 6px;">
+          <span class="btn-ph sm primary">Ver catálogo →</span>
+          <span class="btn-ph sm">Cotizar</span>
+        </div>
+      </div>
+
+      <!-- service 3: desarrollo -->
+      <div class="box" style="display: grid; grid-template-columns: 1fr 2fr auto; gap: 20px; align-items: center; padding: 20px;">
+        <div class="img-ph" style="height: 140px;"><span>[ potro en desarrollo ]</span></div>
+        <div>
+          <div class="label-mono">SERVICIO 03</div>
+          <div class="handwritten lg">Desarrollo embrionario</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div></div>
+          <div style="display: flex; gap: 6px; margin-top: 10px;">
+            <span class="pill">Protocolos</span><span class="pill">Tecnología</span>
+          </div>
+        </div>
+        <div class="stack" style="gap: 6px;">
+          <span class="btn-ph sm primary">Consultar →</span>
+        </div>
+      </div>
+
+      <!-- service 4: asesoría -->
+      <div class="box" style="display: grid; grid-template-columns: 1fr 2fr auto; gap: 20px; align-items: center; padding: 20px;">
+        <div class="img-ph" style="height: 140px;"><span>[ veterinario + cliente ]</span></div>
+        <div>
+          <div class="label-mono">SERVICIO 04</div>
+          <div class="handwritten lg">Asesoría reproductiva</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div></div>
+          <div style="display: flex; gap: 6px; margin-top: 10px;">
+            <span class="pill">Criadores</span><span class="pill">Centros</span><span class="pill">B2B</span>
+          </div>
+        </div>
+        <div class="stack" style="gap: 6px;">
+          <span class="btn-ph sm primary">Agendar →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- form de lead segmentado -->
+    <div class="section-head">
+      <h3>Formulario de lead segmentado</h3>
+      <span class="tag">§5 · Funcionalidades especiales</span>
+    </div>
+    <div class="p24" style="padding-top: 8px;">
+      <div class="box" style="background: var(--paper-2); padding: 24px;">
+        <div class="grid-2" style="gap: 14px;">
+          <div>
+            <div class="label-mono">TIPO DE INTERÉS</div>
+            <div class="stack mt8">
+              <div class="box dashed" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px;"><div style="width: 14px; height: 14px; border: 1.5px solid var(--ink); border-radius: 50%;"></div><span class="handwritten sm">Transferencia embrionaria</span></div>
+              <div class="box" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--ink); color: var(--paper);"><div style="width: 14px; height: 14px; border: 2px solid var(--paper); border-radius: 50%; background: var(--paper);"></div><span class="handwritten sm">Adquisición de semen</span></div>
+              <div class="box dashed" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px;"><div style="width: 14px; height: 14px; border: 1.5px solid var(--ink); border-radius: 50%;"></div><span class="handwritten sm">Asesoría reproductiva</span></div>
+              <div class="box dashed" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px;"><div style="width: 14px; height: 14px; border: 1.5px solid var(--ink); border-radius: 50%;"></div><span class="handwritten sm">Otro</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="label-mono">DATOS DE CONTACTO</div>
+            <div class="stack mt8">
+              <div class="box dashed" style="padding: 10px;"><span class="label-mono">Nombre completo</span></div>
+              <div class="box dashed" style="padding: 10px;"><span class="label-mono">Email</span></div>
+              <div class="box dashed" style="padding: 10px;"><span class="label-mono">Teléfono / WhatsApp</span></div>
+              <div class="box dashed" style="padding: 10px;"><span class="label-mono">País · región</span></div>
+              <div class="box dashed" style="padding: 10px; min-height: 60px;"><span class="label-mono">Mensaje</span></div>
+            </div>
+            <span class="btn-ph primary mt12" style="margin-top: 14px;">Enviar solicitud →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CATÁLOGO ==================== -->
+<div class="page" data-page="catalogo">
+  <div class="page-head">
+    <span class="idx">06</span>
+    <h1>Catálogo de Caballos, Yeguas y Potros</h1>
+    <span class="note">— motor de conversión. Lista + ficha individual.</span>
+  </div>
+
+  <!-- Vista lista -->
+  <div class="wf">
+    <span class="wf-label">catálogo · vista lista/grid</span>
+    <span class="wf-tag">§4.5</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks"><span>Inicio</span><span>Quiénes Somos</span><span>Genética</span><span>Servicios</span><span style="font-weight: 700; text-decoration: underline;">Catálogo</span><span>Eventos</span><span>Contacto</span></div>
+    </div>
+
+    <div style="padding: 24px 28px; border-bottom: 1.5px solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; gap: 20px;">
+      <div>
+        <div class="label-mono">CATÁLOGO 2026</div>
+        <div class="handwritten" style="font-size: 40px;">Nuestros ejemplares.</div>
+      </div>
+      <div style="text-align: right;">
+        <div class="label-mono">42 EJEMPLARES · 18 DISPONIBLES</div>
+        <div style="display: flex; gap: 6px; margin-top: 6px; justify-content: flex-end;">
+          <span class="pill">▦ Grid</span><span class="pill accent">☰ Lista</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- sidebar filtros + grid -->
+    <div style="display: grid; grid-template-columns: 240px 1fr; gap: 0; border-bottom: 1.5px solid var(--ink);">
+      <div style="padding: 20px; border-right: 1.5px dashed var(--ink-3); background: var(--paper-2);">
+        <div class="label-mono">FILTROS</div>
+        <div class="stack mt12" style="margin-top: 16px;">
+          <div>
+            <div class="handwritten sm">Tipo</div>
+            <div class="stack mt8" style="gap: 4px;">
+              <label class="handwritten sm" style="display:flex; align-items:center; gap: 8px; font-size: 14px;"><div style="width:14px; height:14px; border: 1.5px solid var(--ink); background: var(--ink);"></div>Caballos (15)</label>
+              <label class="handwritten sm" style="display:flex; align-items:center; gap: 8px; font-size: 14px;"><div style="width:14px; height:14px; border: 1.5px solid var(--ink);"></div>Yeguas (18)</label>
+              <label class="handwritten sm" style="display:flex; align-items:center; gap: 8px; font-size: 14px;"><div style="width:14px; height:14px; border: 1.5px solid var(--ink);"></div>Potros (9)</label>
+            </div>
+          </div>
+          <div>
+            <div class="handwritten sm">Raza</div>
+            <div class="box dashed mt8" style="padding: 6px; font-size: 12px;">Pura Sangre Lusitano ▾</div>
+          </div>
+          <div>
+            <div class="handwritten sm">Disciplina</div>
+            <div class="stack mt8" style="gap: 4px;">
+              <span class="pill" style="font-size: 12px;">Salto</span>
+              <span class="pill" style="font-size: 12px;">Doma</span>
+              <span class="pill" style="font-size: 12px;">Concurso completo</span>
+            </div>
+          </div>
+          <div>
+            <div class="handwritten sm">Edad</div>
+            <div class="box dashed mt8" style="padding: 10px;">
+              <div style="height: 4px; background: var(--ink); border-radius: 2px; position: relative;">
+                <div style="position: absolute; left: 20%; top: -5px; width: 14px; height: 14px; background: var(--accent); border-radius: 50%;"></div>
+                <div style="position: absolute; left: 70%; top: -5px; width: 14px; height: 14px; background: var(--accent); border-radius: 50%;"></div>
+              </div>
+              <div class="label-mono" style="margin-top: 8px;">3 AÑOS — 10 AÑOS</div>
+            </div>
+          </div>
+          <div>
+            <div class="handwritten sm">Estado</div>
+            <div class="stack mt8" style="gap: 4px;">
+              <label class="handwritten sm" style="display:flex; align-items:center; gap: 8px; font-size: 14px;"><div style="width:14px; height:14px; border: 1.5px solid var(--ink); background: var(--ink);"></div>Disponible venta</label>
+              <label class="handwritten sm" style="display:flex; align-items:center; gap: 8px; font-size: 14px;"><div style="width:14px; height:14px; border: 1.5px solid var(--ink);"></div>Reproducción</label>
+              <label class="handwritten sm" style="display:flex; align-items:center; gap: 8px; font-size: 14px;"><div style="width:14px; height:14px; border: 1.5px solid var(--ink);"></div>Entrenamiento</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p24" style="padding: 24px;">
+        <div class="grid-3" style="gap: 14px;">
+          <div class="horse-card"><div class="ph" style="aspect-ratio: 4/5;"><span>[ XX ]</span></div><div class="info"><div class="name">Marengo III</div><div class="meta">PSL · 5AÑ · SALTO</div><span class="badge">DISP.</span></div></div>
+          <div class="horse-card"><div class="ph" style="aspect-ratio: 4/5;"><span>[ XX ]</span></div><div class="info"><div class="name">Lucera</div><div class="meta">HANN · 8AÑ · DOMA</div><span class="badge repro">REPRO</span></div></div>
+          <div class="horse-card"><div class="ph" style="aspect-ratio: 4/5;"><span>[ XX ]</span></div><div class="info"><div class="name">Zafiro</div><div class="meta">KWPN · 2AÑ · PROM.</div><span class="badge">DISP.</span></div></div>
+          <div class="horse-card"><div class="ph" style="aspect-ratio: 4/5;"><span>[ XX ]</span></div><div class="info"><div class="name">Trueno</div><div class="meta">PSL · 6AÑ · DOMA</div><span class="badge">DISP.</span></div></div>
+          <div class="horse-card"><div class="ph" style="aspect-ratio: 4/5;"><span>[ XX ]</span></div><div class="info"><div class="name">Estrella</div><div class="meta">WB · 4AÑ · SALTO</div><span class="badge repro">REPRO</span></div></div>
+          <div class="horse-card"><div class="ph" style="aspect-ratio: 4/5;"><span>[ XX ]</span></div><div class="info"><div class="name">Rayo</div><div class="meta">SF · 3AÑ · SALTO</div><span class="badge">DISP.</span></div></div>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 8px; margin-top: 24px;">
+          <span class="pill">‹</span><span class="pill accent">1</span><span class="pill">2</span><span class="pill">3</span><span class="pill">›</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ficha individual -->
+  <div class="wf">
+    <span class="wf-label">ficha individual · /catalogo/marengo-iii</span>
+    <span class="wf-tag">§4.5 · detail</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks" style="font-size: 12px;">
+        <span class="label-mono">INICIO / CATÁLOGO / MARENGO III</span>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 0; border-bottom: 1.5px solid var(--ink);">
+      <!-- galería -->
+      <div style="padding: 24px; border-right: 1.5px solid var(--ink);">
+        <div class="img-ph" style="aspect-ratio: 4/3;"><span>[ foto principal · 4:3 ]</span></div>
+        <div class="grid-4 mt12" style="margin-top: 12px; gap: 8px;">
+          <div class="img-ph" style="aspect-ratio: 1; border: 2px solid var(--accent);"><span>01</span></div>
+          <div class="img-ph" style="aspect-ratio: 1;"><span>02</span></div>
+          <div class="img-ph" style="aspect-ratio: 1;"><span>03</span></div>
+          <div class="img-ph" style="aspect-ratio: 1;"><span>▶ video</span></div>
+        </div>
+      </div>
+      <!-- datos -->
+      <div style="padding: 24px;">
+        <div class="label-mono">CABALLO · PURA SANGRE LUSITANO</div>
+        <div class="handwritten" style="font-size: 48px; line-height: 1;">Marengo III</div>
+        <div style="display: flex; gap: 6px; margin-top: 8px;">
+          <span class="pill accent">Disponible</span>
+          <span class="pill">5 años</span>
+          <span class="pill">Salto</span>
+        </div>
+
+        <div class="grid-2 mt16" style="margin-top: 20px; gap: 14px;">
+          <div><div class="label-mono">NACIMIENTO</div><div class="handwritten sm">2021 · México</div></div>
+          <div><div class="label-mono">ALZADA</div><div class="handwritten sm">1.68 m</div></div>
+          <div><div class="label-mono">COLOR</div><div class="handwritten sm">Castaño</div></div>
+          <div><div class="label-mono">DISCIPLINA</div><div class="handwritten sm">Salto · 1.40m</div></div>
+        </div>
+
+        <div class="label-mono" style="margin-top: 20px;">GENEALOGÍA</div>
+        <div class="box mt8" style="padding: 10px; background: var(--paper-2); font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+          <div>├── Padre: SEMENTAL XXXX</div>
+          <div>│ &nbsp;&nbsp;&nbsp;├ Abuelo P.</div>
+          <div>│ &nbsp;&nbsp;&nbsp;└ Abuela P.</div>
+          <div>└── Madre: YEGUA XXXX</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;├ Abuelo M.</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;└ Abuela M.</div>
+        </div>
+
+        <div class="btn-ph primary mt16" style="margin-top: 20px; display: flex; justify-content: center;">Consultar disponibilidad →</div>
+        <div class="btn-ph accent mt8" style="margin-top: 8px; display: flex; justify-content: center;">WhatsApp directo</div>
+      </div>
+    </div>
+
+    <!-- tabs inferiores -->
+    <div style="padding: 24px; border-bottom: 1.5px dashed var(--ink-3); display: flex; gap: 14px;">
+      <span class="btn-ph sm primary">Historial deportivo</span>
+      <span class="btn-ph sm">Información genética</span>
+      <span class="btn-ph sm">Condiciones</span>
+      <span class="btn-ph sm">Galería completa</span>
+    </div>
+
+    <div class="p24">
+      <div class="label-mono">HISTORIAL DEPORTIVO · 2023—2026</div>
+      <div class="stack mt12">
+        <div class="flex-between" style="padding: 10px; border: 1.5px solid var(--ink); border-radius: 4px;"><div><div class="handwritten sm">CSI·3★ Guadalajara · Oct 2025</div><div class="label-mono">SALTO · 1.40M</div></div><div><span class="pill accent">1° LUGAR</span></div></div>
+        <div class="flex-between" style="padding: 10px; border: 1.5px solid var(--ink); border-radius: 4px;"><div><div class="handwritten sm">CSI·2★ Monterrey · Ago 2025</div><div class="label-mono">SALTO · 1.30M</div></div><div><span class="pill">TOP 5</span></div></div>
+        <div class="flex-between" style="padding: 10px; border: 1.5px solid var(--ink); border-radius: 4px;"><div><div class="handwritten sm">Copa México · Jun 2024</div><div class="label-mono">SALTO · 1.20M</div></div><div><span class="pill">3° LUGAR</span></div></div>
+      </div>
+    </div>
+
+    <!-- ejemplares relacionados -->
+    <div class="section-head">
+      <h3>Ejemplares relacionados</h3>
+      <span class="tag">misma línea genética</span>
+    </div>
+    <div class="grid-4 p24" style="padding-top: 8px;">
+      <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name">Lucera</div><div class="meta">PSL · HERMANA</div></div></div>
+      <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name">Trueno</div><div class="meta">PSL · MISMO PADRE</div></div></div>
+      <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name">Duende</div><div class="meta">PSL · MISMO ABUELO</div></div></div>
+      <div class="horse-card"><div class="ph"><span>XX</span></div><div class="info"><div class="name">Aurora</div><div class="meta">PSL · LÍNEA MATERNA</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PRESENCIA INTERNACIONAL ==================== -->
+<div class="page" data-page="internacional">
+  <div class="page-head">
+    <span class="idx">07</span>
+    <h1>Presencia Internacional</h1>
+    <span class="note">— México · España · EE.UU.</span>
+  </div>
+
+  <div class="wf">
+    <span class="wf-label">presencia · 3 mercados</span>
+    <span class="wf-tag">§4.6</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks"><span>Inicio</span><span>Genética</span><span>Servicios</span><span>Catálogo</span><span style="font-weight: 700; text-decoration: underline;">Presencia</span><span>Eventos</span><span>Contacto</span></div>
+    </div>
+
+    <div style="padding: 40px 28px; border-bottom: 1.5px solid var(--ink);">
+      <div class="label-mono">PRESENCIA INTERNACIONAL</div>
+      <div class="handwritten lg mt8" style="font-size: 44px;">Tres mercados. Una visión.</div>
+    </div>
+
+    <!-- mapa grande -->
+    <div style="padding: 24px; border-bottom: 1.5px dashed var(--ink-3);">
+      <div class="img-ph" style="height: 400px;"><span>[ mapa mundi interactivo · pines MX · ES · USA ]</span></div>
+    </div>
+
+    <!-- 3 columnas mercados -->
+    <div class="grid-3 p24">
+      <div class="box" style="padding: 20px;">
+        <div class="handwritten lg">🇲🇽 México</div>
+        <div class="label-mono" style="color: var(--accent);">OPERACIÓN PRINCIPAL</div>
+        <div class="img-ph mt8" style="height: 140px;"><span>[ instalación MX ]</span></div>
+        <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div></div>
+        <div class="label-mono" style="margin-top: 12px;">ALIANZAS</div>
+        <div class="stack mt8" style="gap: 4px;">
+          <div class="box" style="padding: 4px 8px; font-size: 12px;"><span class="handwritten sm">Federación Ecuestre MX</span></div>
+          <div class="box" style="padding: 4px 8px; font-size: 12px;"><span class="handwritten sm">Asoc. Criadores PSL</span></div>
+        </div>
+      </div>
+
+      <div class="box" style="padding: 20px;">
+        <div class="handwritten lg">🇪🇸 España</div>
+        <div class="label-mono" style="color: var(--accent);">MERCADO ESTRATÉGICO</div>
+        <div class="img-ph mt8" style="height: 140px;"><span>[ feria ES ]</span></div>
+        <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div></div>
+        <div class="label-mono" style="margin-top: 12px;">EVENTOS CLAVE</div>
+        <div class="stack mt8" style="gap: 4px;">
+          <div class="box" style="padding: 4px 8px; font-size: 12px;"><span class="handwritten sm">SICAB · Sevilla</span></div>
+          <div class="box" style="padding: 4px 8px; font-size: 12px;"><span class="handwritten sm">CSI Madrid</span></div>
+        </div>
+      </div>
+
+      <div class="box" style="padding: 20px;">
+        <div class="handwritten lg">🇺🇸 EE.UU.</div>
+        <div class="label-mono" style="color: var(--accent);">EXPANSIÓN COMERCIAL</div>
+        <div class="img-ph mt8" style="height: 140px;"><span>[ Wellington FL ]</span></div>
+        <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w80"></div></div>
+        <div class="label-mono" style="margin-top: 12px;">RED DE CONTACTOS</div>
+        <div class="stack mt8" style="gap: 4px;">
+          <div class="box" style="padding: 4px 8px; font-size: 12px;"><span class="handwritten sm">Wellington Equestrian</span></div>
+          <div class="box" style="padding: 4px 8px; font-size: 12px;"><span class="handwritten sm">USEF Partners</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- timeline internacional -->
+    <div class="section-head">
+      <h3>Trayectoria internacional</h3>
+      <span class="tag">timeline horizontal</span>
+    </div>
+    <div class="p24">
+      <div style="display: flex; align-items: stretch; gap: 0; border-left: 2px solid var(--ink); padding-left: 0; position: relative;">
+        <div style="flex: 1; border-right: 1px dashed var(--ink-3); padding: 16px; position: relative;">
+          <div class="label-mono">2018</div>
+          <div class="handwritten sm mt8">Fundación · México</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div></div>
+        </div>
+        <div style="flex: 1; border-right: 1px dashed var(--ink-3); padding: 16px;">
+          <div class="label-mono">2020</div>
+          <div class="handwritten sm mt8">Primera exportación · ES</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div></div>
+        </div>
+        <div style="flex: 1; border-right: 1px dashed var(--ink-3); padding: 16px;">
+          <div class="label-mono">2023</div>
+          <div class="handwritten sm mt8">Alianzas USA</div>
+          <div class="txt-lines mt8"><div class="ln w100"></div></div>
+        </div>
+        <div style="flex: 1; padding: 16px; background: var(--accent); color: var(--paper);">
+          <div class="label-mono" style="color: rgba(255,255,255,0.7);">2026</div>
+          <div class="handwritten sm mt8" style="color: var(--paper);">Sitio institucional</div>
+          <div class="txt-lines mt8"><div class="ln w100" style="background: rgba(255,255,255,0.5);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== EVENTOS ==================== -->
+<div class="page" data-page="eventos">
+  <div class="page-head">
+    <span class="idx">08</span>
+    <h1>Eventos y Circuito Deportivo</h1>
+    <span class="note">— calendario + galería + resultados</span>
+  </div>
+
+  <div class="wf">
+    <span class="wf-label">eventos</span>
+    <span class="wf-tag">§4.7</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks"><span>Inicio</span><span>Genética</span><span>Servicios</span><span>Catálogo</span><span>Presencia</span><span style="font-weight: 700; text-decoration: underline;">Eventos</span><span>Contacto</span></div>
+    </div>
+
+    <div style="padding: 40px 28px; border-bottom: 1.5px solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <div class="label-mono">CIRCUITO DEPORTIVO 2026</div>
+        <div class="handwritten lg" style="font-size: 44px;">Dónde competimos.</div>
+      </div>
+      <div style="display: flex; gap: 6px;">
+        <span class="pill accent">Próximos</span>
+        <span class="pill">Pasados</span>
+        <span class="pill">Calendario</span>
+      </div>
+    </div>
+
+    <!-- próximos eventos -->
+    <div class="p24">
+      <div class="label-mono">PRÓXIMAS PARTICIPACIONES</div>
+      <div class="stack mt12">
+        <div class="box" style="display: grid; grid-template-columns: 80px 1fr auto auto; gap: 20px; align-items: center; padding: 16px;">
+          <div style="text-align: center; border-right: 1.5px dashed var(--ink-3); padding-right: 12px;">
+            <div class="handwritten" style="font-size: 36px;">15</div>
+            <div class="label-mono">MAY</div>
+          </div>
+          <div>
+            <div class="handwritten sm">CSI·3★ Guadalajara</div>
+            <div class="label-mono">MÉXICO · SALTO</div>
+          </div>
+          <div class="stack" style="gap: 2px;">
+            <div class="label-mono">EJEMPLARES</div>
+            <div class="handwritten sm">Marengo III · Trueno</div>
+          </div>
+          <span class="btn-ph sm">Ver →</span>
+        </div>
+        <div class="box" style="display: grid; grid-template-columns: 80px 1fr auto auto; gap: 20px; align-items: center; padding: 16px;">
+          <div style="text-align: center; border-right: 1.5px dashed var(--ink-3); padding-right: 12px;">
+            <div class="handwritten" style="font-size: 36px;">08</div>
+            <div class="label-mono">JUN</div>
+          </div>
+          <div>
+            <div class="handwritten sm">SICAB · Feria Sevilla</div>
+            <div class="label-mono">ESPAÑA · EXHIBICIÓN</div>
+          </div>
+          <div class="stack" style="gap: 2px;">
+            <div class="label-mono">EJEMPLARES</div>
+            <div class="handwritten sm">Lucera · Aurora</div>
+          </div>
+          <span class="btn-ph sm">Ver →</span>
+        </div>
+        <div class="box" style="display: grid; grid-template-columns: 80px 1fr auto auto; gap: 20px; align-items: center; padding: 16px;">
+          <div style="text-align: center; border-right: 1.5px dashed var(--ink-3); padding-right: 12px;">
+            <div class="handwritten" style="font-size: 36px;">22</div>
+            <div class="label-mono">JUL</div>
+          </div>
+          <div>
+            <div class="handwritten sm">Wellington Summer Classic</div>
+            <div class="label-mono">EE.UU. · SALTO</div>
+          </div>
+          <div class="stack" style="gap: 2px;">
+            <div class="label-mono">EJEMPLARES</div>
+            <div class="handwritten sm">Zafiro · Rayo</div>
+          </div>
+          <span class="btn-ph sm">Ver →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- galería -->
+    <div class="section-head">
+      <h3>Galería · eventos recientes</h3>
+      <span class="tag">masonry 4 cols</span>
+    </div>
+    <div class="p24" style="padding-top: 8px; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 140px; gap: 10px;">
+      <div class="img-ph" style="grid-row: span 2;"><span>[ foto evento 01 ]</span></div>
+      <div class="img-ph"><span>[ 02 ]</span></div>
+      <div class="img-ph"><span>[ 03 ]</span></div>
+      <div class="img-ph" style="grid-row: span 2;"><span>[ 04 ]</span></div>
+      <div class="img-ph"><span>[ 05 ]</span></div>
+      <div class="img-ph" style="grid-column: span 2;"><span>[ 06 · panorámica ]</span></div>
+      <div class="img-ph"><span>[ 07 ]</span></div>
+      <div class="img-ph"><span>[ 08 ]</span></div>
+    </div>
+
+    <!-- tabla resultados -->
+    <div class="section-head">
+      <h3>Resultados · últimos 12 meses</h3>
+      <span class="tag">tabla compacta</span>
+    </div>
+    <div class="p24" style="padding-top: 8px;">
+      <div class="box" style="padding: 0;">
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; background: var(--ink); color: var(--paper); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em;">
+          <div>FECHA</div><div>EVENTO</div><div>EJEMPLAR</div><div>CATEGORÍA</div><div style="text-align: right;">RESULTADO</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Kalam', cursive; font-size: 14px;">
+          <div class="label-mono">OCT 25</div><div>CSI·3★ Guadalajara</div><div>Marengo III</div><div>1.40m</div><div style="text-align: right;"><span class="pill accent" style="font-size: 11px;">1°</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Kalam', cursive; font-size: 14px;">
+          <div class="label-mono">AGO 25</div><div>Sevilla Open</div><div>Lucera</div><div>Doma</div><div style="text-align: right;"><span class="pill" style="font-size: 11px;">TOP 5</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Kalam', cursive; font-size: 14px;">
+          <div class="label-mono">JUN 25</div><div>Wellington Spring</div><div>Zafiro</div><div>1.20m</div><div style="text-align: right;"><span class="pill" style="font-size: 11px;">3°</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; font-family: 'Kalam', cursive; font-size: 14px;">
+          <div class="label-mono">MAR 25</div><div>CSI·2★ Monterrey</div><div>Trueno</div><div>1.30m</div><div style="text-align: right;"><span class="pill" style="font-size: 11px;">2°</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTENIDO ==================== -->
+<div class="page" data-page="contenido">
+  <div class="page-head">
+    <span class="idx">09</span>
+    <h1>Contenido Especializado</h1>
+    <span class="note">— editorial técnico · líder de opinión</span>
+  </div>
+
+  <div class="wf">
+    <span class="wf-label">sección editorial</span>
+    <span class="wf-tag">§4.8</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks"><span>Inicio</span><span>Genética</span><span>Servicios</span><span>Catálogo</span><span>Presencia</span><span>Eventos</span><span style="font-weight: 700; text-decoration: underline;">Contenido</span><span>Contacto</span></div>
+    </div>
+
+    <div style="padding: 40px 28px; border-bottom: 1.5px solid var(--ink);">
+      <div class="label-mono">EDITORIAL · AUTORIDAD TÉCNICA</div>
+      <div class="handwritten lg" style="font-size: 44px;">Artículos, análisis y tendencias.</div>
+    </div>
+
+    <!-- categorías -->
+    <div style="padding: 14px 28px; background: var(--paper-2); border-bottom: 1.5px dashed var(--ink-3); display: flex; gap: 8px; flex-wrap: wrap;">
+      <span class="label-mono">CATEGORÍAS:</span>
+      <span class="pill accent">Todos</span>
+      <span class="pill">Genética</span>
+      <span class="pill">Reproducción</span>
+      <span class="pill">Entrenamiento</span>
+      <span class="pill">Mercado</span>
+      <span class="pill">Veterinaria</span>
+    </div>
+
+    <!-- featured + grid -->
+    <div class="grid-2 p24" style="padding: 28px; gap: 24px;">
+      <!-- featured -->
+      <div>
+        <div class="img-ph" style="aspect-ratio: 16/10;"><span>[ cover art 16:10 ]</span></div>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <span class="pill">Genética</span>
+          <span class="label-mono">12 MIN · 18 ABR 2026</span>
+        </div>
+        <div class="handwritten lg mt8" style="font-size: 32px;">Trazabilidad genética en caballos deportivos de alto rendimiento.</div>
+        <div class="txt-lines mt8"><div class="ln w100"></div><div class="ln w90"></div><div class="ln w80"></div></div>
+        <span class="btn-ph mt12" style="margin-top: 14px;">Leer artículo →</span>
+      </div>
+
+      <!-- lista lateral -->
+      <div class="stack" style="gap: 14px;">
+        <div class="box" style="display: grid; grid-template-columns: 1fr 2fr; gap: 12px; align-items: center; padding: 12px;">
+          <div class="img-ph" style="height: 100px;"><span>[ XX ]</span></div>
+          <div>
+            <span class="pill" style="font-size: 11px;">Reproducción</span>
+            <div class="handwritten sm mt8">Protocolo moderno de TE — avances 2026.</div>
+            <div class="label-mono mt8">8 MIN · 12 ABR</div>
+          </div>
+        </div>
+        <div class="box" style="display: grid; grid-template-columns: 1fr 2fr; gap: 12px; align-items: center; padding: 12px;">
+          <div class="img-ph" style="height: 100px;"><span>[ XX ]</span></div>
+          <div>
+            <span class="pill" style="font-size: 11px;">Mercado</span>
+            <div class="handwritten sm mt8">¿Qué buscan los compradores internacionales hoy?</div>
+            <div class="label-mono mt8">6 MIN · 05 ABR</div>
+          </div>
+        </div>
+        <div class="box" style="display: grid; grid-template-columns: 1fr 2fr; gap: 12px; align-items: center; padding: 12px;">
+          <div class="img-ph" style="height: 100px;"><span>[ XX ]</span></div>
+          <div>
+            <span class="pill" style="font-size: 11px;">Entrenamiento</span>
+            <div class="handwritten sm mt8">Desarrollo deportivo desde los 2 años.</div>
+            <div class="label-mono mt8">10 MIN · 28 MAR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- grid todos -->
+    <div class="section-head">
+      <h3>Todos los artículos</h3>
+      <span class="tag">grid 3 columnas</span>
+    </div>
+    <div class="grid-3 p24" style="padding-top: 8px;">
+      <div class="box stack" style="padding: 0; overflow: hidden;">
+        <div class="img-ph" style="aspect-ratio: 16/10;"><span>[ XX ]</span></div>
+        <div style="padding: 14px;">
+          <span class="pill" style="font-size: 11px;">Veterinaria</span>
+          <div class="handwritten sm mt8">Salud preventiva en potros.</div>
+          <div class="label-mono mt8">15 MAR 2026</div>
+        </div>
+      </div>
+      <div class="box stack" style="padding: 0; overflow: hidden;">
+        <div class="img-ph" style="aspect-ratio: 16/10;"><span>[ XX ]</span></div>
+        <div style="padding: 14px;">
+          <span class="pill" style="font-size: 11px;">Genética</span>
+          <div class="handwritten sm mt8">Cruzas exitosas — 5 casos de estudio.</div>
+          <div class="label-mono mt8">02 MAR 2026</div>
+        </div>
+      </div>
+      <div class="box stack" style="padding: 0; overflow: hidden;">
+        <div class="img-ph" style="aspect-ratio: 16/10;"><span>[ XX ]</span></div>
+        <div style="padding: 14px;">
+          <span class="pill" style="font-size: 11px;">Mercado</span>
+          <div class="handwritten sm mt8">Panorama del mercado ecuestre USA.</div>
+          <div class="label-mono mt8">20 FEB 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- newsletter CTA -->
+    <div style="background: var(--ink); color: var(--paper); padding: 30px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+      <div>
+        <div class="label-mono" style="color: rgba(255,255,255,0.6);">NEWSLETTER MENSUAL</div>
+        <div class="handwritten" style="font-size: 28px; color: var(--paper);">Análisis técnico directo a tu inbox.</div>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <div class="box dashed" style="padding: 10px 14px; background: transparent; color: var(--paper); border-color: var(--paper);">tu@email.com</div>
+        <span class="btn-ph accent">Suscribirme</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTACTO ==================== -->
+<div class="page" data-page="contacto">
+  <div class="page-head">
+    <span class="idx">10</span>
+    <h1>Contacto Comercial</h1>
+    <span class="note">— lead gen + WhatsApp + contacto regional</span>
+  </div>
+
+  <div class="wf">
+    <span class="wf-label">contacto</span>
+    <span class="wf-tag">§4.9</span>
+    <div class="site-header">
+      <div class="logo-ph">LOGO</div>
+      <div class="navlinks"><span>Inicio</span><span>Genética</span><span>Servicios</span><span>Catálogo</span><span>Presencia</span><span>Eventos</span><span>Contenido</span><span style="font-weight: 700; text-decoration: underline;">Contacto</span></div>
+    </div>
+
+    <div style="padding: 40px 28px; border-bottom: 1.5px solid var(--ink);">
+      <div class="label-mono">CONTACTO COMERCIAL</div>
+      <div class="handwritten lg" style="font-size: 44px;">Hablemos de tu proyecto ecuestre.</div>
+    </div>
+
+    <!-- dos columnas: form + info -->
+    <div class="grid-2" style="grid-template-columns: 1.3fr 1fr; gap: 0; border-bottom: 1.5px solid var(--ink);">
+      <!-- form -->
+      <div style="padding: 28px; border-right: 1.5px solid var(--ink);">
+        <div class="label-mono">FORMULARIO SEGMENTADO</div>
+        <div class="handwritten mt8">¿Qué te interesa?</div>
+
+        <div class="grid-3 mt12" style="margin-top: 14px; gap: 8px;">
+          <div class="box accent" style="padding: 10px; text-align: center;"><div class="handwritten sm" style="color: var(--paper);">Comprar ejemplar</div></div>
+          <div class="box" style="padding: 10px; text-align: center;"><div class="handwritten sm">Servicios reprod.</div></div>
+          <div class="box" style="padding: 10px; text-align: center;"><div class="handwritten sm">Alianzas</div></div>
+          <div class="box" style="padding: 10px; text-align: center;"><div class="handwritten sm">Prensa</div></div>
+          <div class="box" style="padding: 10px; text-align: center;"><div class="handwritten sm">Inversión</div></div>
+          <div class="box" style="padding: 10px; text-align: center;"><div class="handwritten sm">Otro</div></div>
+        </div>
+
+        <div class="label-mono" style="margin-top: 20px;">DATOS</div>
+        <div class="grid-2 mt8" style="gap: 10px;">
+          <div class="box dashed" style="padding: 12px;"><span class="label-mono">Nombre</span></div>
+          <div class="box dashed" style="padding: 12px;"><span class="label-mono">Empresa / Cortijo</span></div>
+          <div class="box dashed" style="padding: 12px;"><span class="label-mono">Email</span></div>
+          <div class="box dashed" style="padding: 12px;"><span class="label-mono">Teléfono · WhatsApp</span></div>
+          <div class="box dashed" style="padding: 12px;"><span class="label-mono">País ▾</span></div>
+          <div class="box dashed" style="padding: 12px;"><span class="label-mono">Rol ▾</span></div>
+        </div>
+        <div class="box dashed mt8" style="margin-top: 10px; padding: 12px; min-height: 90px;"><span class="label-mono">Mensaje · detalles de tu consulta</span></div>
+
+        <div class="flex-between mt12" style="margin-top: 14px;">
+          <label class="handwritten sm" style="display: flex; align-items: center; gap: 6px; font-size: 14px;">
+            <div style="width: 14px; height: 14px; border: 1.5px solid var(--ink);"></div>
+            Acepto recibir comunicaciones
+          </label>
+          <span class="btn-ph primary">Enviar solicitud →</span>
+        </div>
+      </div>
+
+      <!-- info side -->
+      <div style="padding: 28px; background: var(--paper-2);">
+        <div class="label-mono">CONTACTO DIRECTO</div>
+        <div class="handwritten mt8">WhatsApp Business</div>
+        <div class="box accent mt8" style="padding: 14px; text-align: center; margin-top: 10px;">
+          <div class="handwritten" style="color: var(--paper);">+52 · 33 · XXXX · XXXX</div>
+          <div class="label-mono" style="color: rgba(255,255,255,0.7); margin-top: 4px;">RESPUESTA 24H</div>
+        </div>
+
+        <div class="label-mono" style="margin-top: 24px;">POR REGIÓN</div>
+        <div class="stack mt8">
+          <div class="box" style="padding: 12px;">
+            <div class="flex-between"><div class="handwritten sm">🇲🇽 México</div><span class="label-mono">PRINCIPAL</span></div>
+            <div class="txt-lines mt8"><div class="ln w80"></div><div class="ln w60"></div></div>
+          </div>
+          <div class="box" style="padding: 12px;">
+            <div class="flex-between"><div class="handwritten sm">🇪🇸 España</div><span class="label-mono">ALIANZA</span></div>
+            <div class="txt-lines mt8"><div class="ln w80"></div><div class="ln w60"></div></div>
+          </div>
+          <div class="box" style="padding: 12px;">
+            <div class="flex-between"><div class="handwritten sm">🇺🇸 EE.UU.</div><span class="label-mono">PARTNER</span></div>
+            <div class="txt-lines mt8"><div class="ln w80"></div><div class="ln w60"></div></div>
+          </div>
+        </div>
+
+        <div class="label-mono" style="margin-top: 24px;">SOCIAL</div>
+        <div style="display: flex; gap: 8px; margin-top: 8px;">
+          <div class="box" style="padding: 8px 14px;"><span class="handwritten sm">IG</span></div>
+          <div class="box" style="padding: 8px 14px;"><span class="handwritten sm">YouTube</span></div>
+          <div class="box" style="padding: 8px 14px;"><span class="handwritten sm">LinkedIn</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- mapa -->
+    <div class="p24">
+      <div class="label-mono">UBICACIÓN · CORTIJO</div>
+      <div class="img-ph mt8" style="height: 280px;"><span>[ mapa · ubicación del cortijo<br/>con pin y coordenadas ]</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MÓVIL ==================== -->
+<div class="page" data-page="mobile">
+  <div class="page-head">
+    <span class="idx">11</span>
+    <h1>Vista móvil</h1>
+    <span class="note">— 3 pantallas clave (home, catálogo, ficha)</span>
+  </div>
+
+  <div class="wf p24" style="padding: 40px; display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; background: var(--paper-2);">
+    <span class="wf-label">mobile first · 375px</span>
+    <span class="wf-tag">RESPONSIVE</span>
+
+    <!-- Home mobile -->
+    <div class="mobile">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <div class="logo-ph" style="width: 80px; height: 24px; font-size: 12px;">LOGO</div>
+        <span class="label-mono">☰ ES</span>
+      </div>
+      <div class="img-ph" style="height: 200px;"><span>[ hero ]</span></div>
+      <div class="handwritten" style="font-size: 28px; margin-top: 10px; line-height: 1;">Excelencia<br/>genética.</div>
+      <div class="btn-ph primary sm" style="margin-top: 10px; width: 100%; justify-content: center;">Conocer genética</div>
+      <div class="btn-ph sm mt8" style="margin-top: 6px; width: 100%; justify-content: center;">Contactar</div>
+
+      <div class="label-mono" style="margin-top: 18px;">PILARES</div>
+      <div class="grid-2 mt8" style="gap: 6px; margin-top: 8px;">
+        <div class="box" style="padding: 8px; font-size: 12px;"><span class="handwritten sm">Genética</span></div>
+        <div class="box" style="padding: 8px; font-size: 12px;"><span class="handwritten sm">Reprod.</span></div>
+        <div class="box" style="padding: 8px; font-size: 12px;"><span class="handwritten sm">Entren.</span></div>
+        <div class="box" style="padding: 8px; font-size: 12px;"><span class="handwritten sm">Comerc.</span></div>
+      </div>
+
+      <div class="label-mono" style="margin-top: 14px;">DESTACADOS</div>
+      <div class="stack mt8" style="gap: 6px;">
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 16/9;"><span>XX</span></div><div class="info"><div class="name" style="font-size: 16px;">Marengo III</div><div class="meta">PSL · 5AÑ</div></div></div>
+      </div>
+
+      <div class="label-mono" style="text-align: center; margin-top: 14px;">· · · scroll · · ·</div>
+    </div>
+
+    <!-- Catálogo mobile -->
+    <div class="mobile">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <span class="label-mono">‹ CATÁLOGO</span>
+        <span class="label-mono">▽ FILTRAR</span>
+      </div>
+      <div class="label-mono">42 EJEMPLARES</div>
+      <div style="display: flex; gap: 4px; overflow-x: auto; margin-top: 8px;">
+        <span class="pill accent" style="font-size: 11px; white-space: nowrap;">Todos</span>
+        <span class="pill" style="font-size: 11px; white-space: nowrap;">Caballos</span>
+        <span class="pill" style="font-size: 11px; white-space: nowrap;">Yeguas</span>
+        <span class="pill" style="font-size: 11px; white-space: nowrap;">Potros</span>
+      </div>
+      <div class="grid-2 mt8" style="gap: 6px; margin-top: 10px;">
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>XX</span></div><div class="info"><div class="name" style="font-size: 14px;">Marengo</div><div class="meta">PSL · 5AÑ</div></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>XX</span></div><div class="info"><div class="name" style="font-size: 14px;">Lucera</div><div class="meta">HANN · 8AÑ</div></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>XX</span></div><div class="info"><div class="name" style="font-size: 14px;">Zafiro</div><div class="meta">KWPN · 2AÑ</div></div></div>
+        <div class="horse-card"><div class="ph" style="aspect-ratio: 1;"><span>XX</span></div><div class="info"><div class="name" style="font-size: 14px;">Trueno</div><div class="meta">PSL · 6AÑ</div></div></div>
+      </div>
+    </div>
+
+    <!-- Ficha mobile -->
+    <div class="mobile">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <span class="label-mono">‹ ATRÁS</span>
+        <span class="label-mono">♡ GUARDAR</span>
+      </div>
+      <div class="img-ph" style="aspect-ratio: 1;"><span>[ foto ficha ]</span></div>
+      <div style="display: flex; gap: 4px; margin-top: 6px;">
+        <div class="img-ph" style="aspect-ratio: 1; flex: 1; border-width: 2px; border-color: var(--accent);"><span style="font-size: 10px;">01</span></div>
+        <div class="img-ph" style="aspect-ratio: 1; flex: 1;"><span style="font-size: 10px;">02</span></div>
+        <div class="img-ph" style="aspect-ratio: 1; flex: 1;"><span style="font-size: 10px;">03</span></div>
+        <div class="img-ph" style="aspect-ratio: 1; flex: 1;"><span style="font-size: 10px;">▶</span></div>
+      </div>
+      <div class="label-mono" style="margin-top: 12px;">CABALLO · PSL</div>
+      <div class="handwritten" style="font-size: 32px;">Marengo III</div>
+      <div style="display: flex; gap: 4px; margin-top: 6px;">
+        <span class="pill accent" style="font-size: 11px;">Disponible</span>
+        <span class="pill" style="font-size: 11px;">5 años</span>
+      </div>
+      <div class="grid-2 mt12" style="gap: 8px; margin-top: 14px;">
+        <div><div class="label-mono">EDAD</div><div class="handwritten sm">5 años</div></div>
+        <div><div class="label-mono">ALZADA</div><div class="handwritten sm">1.68m</div></div>
+        <div><div class="label-mono">DISCIPLINA</div><div class="handwritten sm">Salto</div></div>
+        <div><div class="label-mono">COLOR</div><div class="handwritten sm">Castaño</div></div>
+      </div>
+      <div class="btn-ph primary sm mt12" style="margin-top: 12px; width: 100%; justify-content: center;">Consultar disponibilidad</div>
+      <div class="btn-ph accent sm mt8" style="margin-top: 6px; width: 100%; justify-content: center;">💬 WhatsApp directo</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Tabs navigation
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const pages = document.querySelectorAll('.page');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      pages.forEach(p => p.classList.toggle('active', p.dataset.page === t.dataset.tab));
+      localStorage.setItem('cortijo_tab', t.dataset.tab);
+      window.scrollTo(0,0);
+    });
+  });
+  // restore
+  const saved = localStorage.getItem('cortijo_tab');
+  if (saved) {
+    const btn = document.querySelector(`nav.tabs button[data-tab="${saved}"]`);
+    if (btn) btn.click();
+  }
+
+  // Home variations
+  const hvars = document.querySelectorAll('.hvar');
+  const variations = document.querySelectorAll('.variation');
+  hvars.forEach(b => {
+    b.addEventListener('click', () => {
+      hvars.forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      variations.forEach(v => v.classList.toggle('on', v.dataset.var === b.dataset.var));
+      localStorage.setItem('cortijo_hvar', b.dataset.var);
+    });
+  });
+  const savedV = localStorage.getItem('cortijo_hvar');
+  if (savedV) {
+    const vbtn = document.querySelector(`.hvar[data-var="${savedV}"]`);
+    if (vbtn) vbtn.click();
+  }
+
+  // Density
+  const dens = document.querySelectorAll('.dens');
+  dens.forEach(b => {
+    b.addEventListener('click', () => {
+      dens.forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      document.body.classList.toggle('compact', b.dataset.dens === 'compact');
+      if (b.dataset.dens === 'compact') {
+        document.documentElement.style.setProperty('--paper', '#f5f1e8');
+      }
+    });
+  });
+
+  // Annotations toggle (placeholder — just hides callouts)
+  const anns = document.querySelectorAll('.ann');
+  anns.forEach(b => {
+    b.addEventListener('click', () => {
+      anns.forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      document.querySelectorAll('.callout, .annotation').forEach(el => {
+        el.style.display = b.dataset.ann === 'off' ? 'none' : '';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
