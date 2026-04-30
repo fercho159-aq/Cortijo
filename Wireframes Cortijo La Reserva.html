@@ -4,10 +4,14 @@
 <meta charset="utf-8" />
 <title>Wireframes — Cortijo La Reserva</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=Architects+Daughter&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
   :root {
     --ink: #1a1a1a;
     --ink-2: #3a3a3a;
@@ -24,7 +28,7 @@
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: 'Kalam', cursive;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
   }
   body {
@@ -43,13 +47,13 @@
     display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
   }
   .topbar .title {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 28px;
     line-height: 1;
   }
   .topbar .sub {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     color: var(--ink-3);
     text-transform: uppercase;
@@ -67,13 +71,13 @@
     background: var(--paper-2);
   }
   .tweak-group label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     color: var(--ink-3);
   }
   .tweak-group button {
-    font-family: 'Kalam', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     background: transparent;
     border: none;
@@ -96,7 +100,7 @@
     position: sticky; top: 63px; z-index: 40;
   }
   nav.tabs button {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     background: transparent;
     border: 1.5px solid transparent;
@@ -113,7 +117,7 @@
     transform: rotate(-0.5deg);
   }
   nav.tabs .num {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     vertical-align: super;
     margin-right: 4px;
@@ -132,7 +136,7 @@
     flex-wrap: wrap;
   }
   .page-head .idx {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     color: var(--ink-3);
     border: 1.5px solid var(--ink);
@@ -140,14 +144,14 @@
     border-radius: 50%;
   }
   .page-head h1 {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 44px;
     margin: 0;
     line-height: 1;
   }
   .page-head .note {
-    font-family: 'Kalam', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     color: var(--ink-3);
   }
@@ -168,7 +172,7 @@
     top: -14px; left: 18px;
     background: var(--paper);
     padding: 0 10px;
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     color: var(--ink-2);
   }
@@ -178,7 +182,7 @@
     background: var(--ink);
     color: var(--paper);
     padding: 2px 10px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -204,7 +208,7 @@
       linear-gradient(45deg, transparent 48%, var(--ink-3) 48% 52%, transparent 52%);
     background-color: var(--paper-2);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     color: var(--ink-2);
     text-align: center;
@@ -252,7 +256,7 @@
     padding: 8px 16px;
     border: 2px solid var(--ink);
     border-radius: 3px;
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 600;
     background: var(--paper);
@@ -262,14 +266,14 @@
   .btn-ph.sm { font-size: 14px; padding: 5px 12px; }
 
   .label-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--ink-3);
   }
   .handwritten {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 22px;
     font-weight: 600;
   }
@@ -277,7 +281,7 @@
   .handwritten.lg { font-size: 34px; }
 
   .annotation {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     color: var(--accent);
     position: absolute;
@@ -288,7 +292,7 @@
   }
 
   .arrow {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     color: var(--accent);
     font-size: 24px;
   }
@@ -304,7 +308,7 @@
   .browser .dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--ink); }
   .browser .url {
     flex: 1;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     background: var(--paper);
     border: 1.5px solid var(--ink);
@@ -313,7 +317,7 @@
     color: var(--ink-2);
   }
   .browser .lang {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     border: 1.5px solid var(--ink);
     padding: 2px 8px;
@@ -330,14 +334,14 @@
     width: 120px; height: 36px;
     border: 1.5px solid var(--ink);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 700;
     background: var(--paper-2);
   }
   .site-header .navlinks { display: flex; gap: 18px; flex: 1; justify-content: center; }
   .site-header .navlinks span {
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     color: var(--ink-2);
   }
@@ -362,11 +366,11 @@
     position: absolute; top: 14px; right: 14px;
     background: var(--paper); border: 1.5px solid var(--ink);
     padding: 4px 10px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
   }
   .hero h2 {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 52px; line-height: 1;
     margin: 0;
     max-width: 700px;
@@ -402,11 +406,11 @@
     border-top: 2px dashed var(--ink-3);
   }
   .section-head h3 {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 32px; margin: 0;
   }
   .section-head .tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px; color: var(--ink-3);
     text-transform: uppercase; letter-spacing: 0.08em;
   }
@@ -427,7 +431,7 @@
       linear-gradient(45deg, transparent 48%, var(--ink-3) 48% 52%, transparent 52%);
     border-bottom: 1.5px solid var(--ink);
     display: flex; align-items: center; justify-content: center;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     color: var(--ink-2);
   }
@@ -435,12 +439,12 @@
     padding: 10px;
   }
   .horse-card .name {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 20px;
   }
   .horse-card .meta {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 9px;
     color: var(--ink-3);
     letter-spacing: 0.05em;
@@ -450,7 +454,7 @@
     display: inline-block;
     background: var(--green);
     color: var(--paper);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 9px;
     padding: 1px 6px;
     border-radius: 2px;
@@ -468,7 +472,7 @@
     display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 20px;
   }
   .site-footer h5 {
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 14px; margin: 0 0 8px;
   }
 
@@ -505,17 +509,17 @@
     grid-column: 1 / -1;
     background: var(--ink);
     color: var(--paper);
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 28px;
     padding: 16px;
   }
   .sitemap .node .nm {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 600;
   }
   .sitemap .node .nn {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 9px;
     color: var(--ink-3);
   }
@@ -548,7 +552,7 @@
   .swatch .chip { height: 80px; }
   .swatch .meta {
     padding: 6px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 10px;
     border-top: 1.5px solid var(--ink);
     background: var(--paper);
@@ -565,7 +569,7 @@
     border: 1.5px solid var(--ink);
     border-radius: 20px;
     padding: 3px 10px;
-    font-family: 'Kalam', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     background: var(--paper);
   }
@@ -577,7 +581,7 @@
 
   .v-label {
     display: inline-block;
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 22px;
     font-weight: 700;
     background: var(--accent);
@@ -593,7 +597,7 @@
     background: rgba(139, 69, 19, 0.05);
     padding: 10px 14px;
     border-radius: 4px;
-    font-family: 'Kalam', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: var(--accent);
     margin: 14px 0;
@@ -611,18 +615,18 @@
     gap: 24px;
   }
   .intro-card h2 {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 36px;
     margin: 0 0 10px;
   }
   .intro-card p {
-    font-family: 'Kalam', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     margin: 6px 0;
     color: var(--ink-2);
   }
   .intro-card ul {
-    font-family: 'Kalam', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: var(--ink-2);
     padding-left: 18px;
@@ -633,14 +637,14 @@
     padding-left: 18px;
   }
   .intro-card .legend h4 {
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     margin: 0 0 8px;
     color: var(--ink-2);
   }
   .legend-item {
     display: flex; align-items: center; gap: 8px;
-    font-family: 'Kalam', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 13px;
     margin-bottom: 4px;
   }
@@ -654,7 +658,7 @@
 
   /* cruces diagonales para timeline */
   .gantt-row { display: grid; grid-template-columns: 160px repeat(6, 1fr); gap: 4px; margin-bottom: 4px; font-size: 13px; }
-  .gantt-row .task { font-family: 'Kalam', cursive; }
+  .gantt-row .task { font-family: 'Inter', sans-serif; }
   .gantt-row .cell { height: 20px; border: 1px solid var(--ink-3); border-radius: 2px; }
   .gantt-row .cell.on { background: var(--ink); }
   .gantt-row .cell.accent { background: var(--accent); }
@@ -809,7 +813,7 @@
   <div class="wf p24">
     <span class="wf-label">flujo principal de conversión</span>
     <span class="wf-tag">B2B</span>
-    <div style="display:flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: 'Caveat', cursive; font-size: 20px; padding: 10px 0;">
+    <div style="display:flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: 'Inter', sans-serif; font-size: 20px; padding: 10px 0;">
       <div class="box" style="flex: 0 0 auto;">Landing (Home)</div>
       <span class="arrow">→</span>
       <div class="box" style="flex: 0 0 auto;">Propuesta Genética <span class="label-mono">ó</span> Catálogo</div>
@@ -970,7 +974,7 @@
       <div class="grid-2" style="gap: 0; border-bottom: 1.5px solid var(--ink);">
         <div class="p24" style="padding: 40px; background: var(--paper-2); border-right: 1.5px solid var(--ink); display: flex; flex-direction: column; justify-content: center;">
           <div class="label-mono">CORTIJO LA RESERVA · 2026</div>
-          <h2 style="font-family: 'Caveat'; font-size: 56px; line-height: 1; margin: 14px 0;">Líneas<br/>genéticas<br/>de élite.</h2>
+          <h2 style="font-family: 'Inter'; font-size: 56px; line-height: 1; margin: 14px 0;">Líneas<br/>genéticas<br/>de élite.</h2>
           <div class="txt-lines"><div class="ln w90"></div><div class="ln w100"></div><div class="ln w70"></div></div>
           <div style="display: flex; gap: 10px; margin-top: 18px;">
             <span class="btn-ph primary">Ver catálogo</span>
@@ -1042,7 +1046,7 @@
       <!-- masthead style -->
       <div style="padding: 40px 28px 20px; border-bottom: 2px solid var(--ink); text-align: center; background: var(--paper-2);">
         <div class="label-mono">VOLUMEN 01 · ABRIL 2026 · MÉXICO · ESPAÑA · USA</div>
-        <h2 style="font-family: 'Caveat'; font-size: 72px; line-height: 1; margin: 10px 0 6px;">Cortijo La Reserva</h2>
+        <h2 style="font-family: 'Inter'; font-size: 72px; line-height: 1; margin: 10px 0 6px;">Cortijo La Reserva</h2>
         <div class="handwritten" style="color: var(--ink-3); font-style: italic;">Genética equina · Reproducción asistida</div>
       </div>
 
@@ -1316,7 +1320,7 @@
         <div class="handwritten mt8">Ejemplo · Marengo III</div>
         <!-- pedigree tree placeholder -->
         <div class="box mt8" style="padding: 20px; background: var(--paper-2);">
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-size: 11px; font-family: 'JetBrains Mono', monospace;">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-size: 11px; font-family: 'Inter', sans-serif;">
             <div class="box" style="padding: 6px; font-size: 10px; grid-column: span 4; text-align:center; background: var(--ink); color: var(--paper);">MARENGO III</div>
             <div class="box" style="padding: 4px; font-size: 9px; grid-column: span 2; text-align:center;">PADRE · SEMENTAL</div>
             <div class="box" style="padding: 4px; font-size: 9px; grid-column: span 2; text-align:center;">MADRE · YEGUA</div>
@@ -1619,7 +1623,7 @@
         </div>
 
         <div class="label-mono" style="margin-top: 20px;">GENEALOGÍA</div>
-        <div class="box mt8" style="padding: 10px; background: var(--paper-2); font-family: 'JetBrains Mono', monospace; font-size: 11px;">
+        <div class="box mt8" style="padding: 10px; background: var(--paper-2); font-family: 'Inter', sans-serif; font-size: 11px;">
           <div>├── Padre: SEMENTAL XXXX</div>
           <div>│ &nbsp;&nbsp;&nbsp;├ Abuelo P.</div>
           <div>│ &nbsp;&nbsp;&nbsp;└ Abuela P.</div>
@@ -1864,19 +1868,19 @@
     </div>
     <div class="p24" style="padding-top: 8px;">
       <div class="box" style="padding: 0;">
-        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; background: var(--ink); color: var(--paper); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em;">
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; background: var(--ink); color: var(--paper); font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.08em;">
           <div>FECHA</div><div>EVENTO</div><div>EJEMPLAR</div><div>CATEGORÍA</div><div style="text-align: right;">RESULTADO</div>
         </div>
-        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Kalam', cursive; font-size: 14px;">
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Inter', sans-serif; font-size: 14px;">
           <div class="label-mono">OCT 25</div><div>CSI·3★ Guadalajara</div><div>Marengo III</div><div>1.40m</div><div style="text-align: right;"><span class="pill accent" style="font-size: 11px;">1°</span></div>
         </div>
-        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Kalam', cursive; font-size: 14px;">
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Inter', sans-serif; font-size: 14px;">
           <div class="label-mono">AGO 25</div><div>Sevilla Open</div><div>Lucera</div><div>Doma</div><div style="text-align: right;"><span class="pill" style="font-size: 11px;">TOP 5</span></div>
         </div>
-        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Kalam', cursive; font-size: 14px;">
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; border-bottom: 1px dashed var(--ink-3); font-family: 'Inter', sans-serif; font-size: 14px;">
           <div class="label-mono">JUN 25</div><div>Wellington Spring</div><div>Zafiro</div><div>1.20m</div><div style="text-align: right;"><span class="pill" style="font-size: 11px;">3°</span></div>
         </div>
-        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; font-family: 'Kalam', cursive; font-size: 14px;">
+        <div style="display: grid; grid-template-columns: 80px 2fr 1fr 1fr 100px; padding: 10px 14px; font-family: 'Inter', sans-serif; font-size: 14px;">
           <div class="label-mono">MAR 25</div><div>CSI·2★ Monterrey</div><div>Trueno</div><div>1.30m</div><div style="text-align: right;"><span class="pill" style="font-size: 11px;">2°</span></div>
         </div>
       </div>
